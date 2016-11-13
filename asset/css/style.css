@@ -1,0 +1,181 @@
+.headersection{background: #58614E;}
+.logosection{}
+.logosection img {
+    height: 120px;
+    width: 140px;
+    float: left;
+    margin: 0px;
+    padding: 0px;
+}
+.slogan{}
+.slogan h4 {
+    color: #fff;
+    font-size: 25px;
+    margin-top: 25px;
+}
+.slogan p {
+    color: #fff;
+    font-size: 15px;
+}
+.search{}
+.menusection{}
+.menuoption{
+    border-radius: 0px;
+}
+.slidersection{margin-top: -20px;}
+.postsection{}
+.postandtestimonial{}
+.samepost {
+    min-height: 100px;
+    text-align: justify;
+    line-height: 24px;
+    font-size: 15px;
+}
+.samepost h3 {
+    color: #57614E;
+    margin: 10px 0px;
+    font-size: 25px;
+}
+.samepost p{}
+.tesitmonial h2 {
+    margin: 10px 0px;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+.tesitmonial p {
+    text-align: justify;
+    font-size: 14px;
+    line-height: 22px;
+}
+.tesitmonial h4 {
+    text-align: right;
+    text-transform: uppercase;
+    font-size: 15px;
+    cursor: pointer;
+}
+.portfoliosection {
+    background: #E2E2E2;
+    margin: 0px;
+    border-top: 1px solid #999;
+    min-height: 420px;
+    border-bottom: 1px solid #999;
+}
+.portfoliosection h2 {
+    text-align: center;
+    margin: 10px auto;
+    font-size: 29px;
+    text-transform: uppercase;
+}
+.sameportfolio {
+    min-height: 150px;
+}
+.sameportfolio img {
+    border: 1px solid #999;
+    margin: 5px;
+    background: #fff;
+    padding: 5px;
+    width: 265px;
+}
+.sameportfolio h4 {
+    margin: 8px 3px;
+    font-size: 20px;
+}
+.sameportfolio p {
+    text-align: justify;
+    font-size: 15px;
+    line-height: 22px;
+    min-height: 80px;
+}
+.sameportfolio button {
+    width: 107px;
+    height: 35px;
+}
+.productsection {
+    min-height: 300px;
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
+    margin-top: 10px;
+}
+.productsection h2 {
+    text-align: center;
+    text-transform: uppercase;
+    margin: 10px 0px;
+    font-size: 25px;
+}
+.sameproducts {
+    min-height: 260px;
+    border: 1px solid #ddd;
+    padding: 5px;
+    margin: 5px;
+}
+.sameproducts img {
+    border: 2px solid #ddd;
+    padding: 2px;
+    margin: 8px 5px;
+}
+.sameproducts p {
+    text-align: justify;
+    margin: 5px;
+    padding: 5px;
+    line-height: 24px;
+    font-size: 15px;
+}
+.footersection{background: #4E5742}
+.gototop{
+    background: url("../images/scroll-top.png") no-repeat scroll 0 0;
+    bottom: 10px;
+    right: 10px;
+    position: fixed;
+    cursor: pointer;
+    width: 64px;
+    height: 64px;
+
+}
+.socialservice{}
+.socialservice i{}
+.copyright{}
+.copyright p {
+    font-size: 15px;
+    color: #fff;
+    float: right;
+    margin: 10px 10px;
+}
+/*its for login page*/
+.loginsection,.studentslogin,.teacherslogin{min-height: 435px}
+.login{}
+.msg{
+    text-align: center;
+    font-size: 18px;
+    color: red;
+}
+.txtheading{text-transform: uppercase;
+            font-size: 20px;
+            font-weight: bold;}
+.txt{min-width: 50px;
+     text-transform: uppercase;
+     font-size: 15px;
+     color: #31708F;}
+.txtinput{
+    width: 245px;
+    height: 35px;
+    border: 1px solid #999;
+    font-size: 18px;
+}
+.loginbtn{width: 110px;
+          height: 40px;
+          font-size: 20px;
+          border: 1px solid #dd;}
+/*students login section */
+.studentslogin{}
+.stdlogin{margin-top: 15px;}
+.stdpanel,.teacherpanel{
+    text-align: center;
+    font-size: 23px;
+    background: #1D61A7;
+    border-radius: 10px;
+    height: 45px;
+    padding: 5px;
+    color: #fff;
+}
+.stdsm{font-size: 18px;}

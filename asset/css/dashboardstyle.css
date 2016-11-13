@@ -1,0 +1,287 @@
+.sidebar{
+    /*position: fixed;*/
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #f5f5f5;
+    border-right: 1px solid #eee;
+}
+.headertop{background: #000;
+           color: #fff;
+}
+.linka{color: #fff;}
+.navbar-default .navbar-brand{color: #fff;}
+.navbar-default .navbar-brand:hover{color: #fff;}
+.navbar-default .navbar-nav > li > a{color: #fff;}
+.navbar-default .navbar-nav > li > a:hover{color: #fff;}
+.footersection{
+    background: #B6CDE0;
+}
+.socialservice{}
+.copyright{float: right;
+           margin: 5px 0px;}
+.copyright p{}
+.alwaysactive{
+    color: #fff;
+    background-color: #428bca;
+}
+.alwaysactive:hover{background: none;}
+
+.msg,.exist{text-align: center;
+            background: #ddd;
+            font-size: 20px;
+            color: red;
+}
+.sameli{font-size: 16px;}
+.btnextra{cursor: pointer;
+          text-align: center;
+          margin-top: 2px;
+          background: #000;
+          height: 35px;
+          font-size: 20px;
+          color: #fffffb;
+          padding: 2px 5px;}
+.btnclass{cursor: pointer;
+          text-align: center;
+          margin-top: 5px;
+}
+.btnclassroutine{}
+.showclass{display: none;}
+.showclassroutine{display: none;}
+.btnstudent{cursor: pointer;
+            text-align: center;
+            margin-top: 5px;
+}
+.showstd{display: none;}
+.btnsetting{cursor: pointer;
+            text-align: center;
+            margin-top: 5px;}
+.showsetting{display: none;}
+.showslider{display: none;}
+.showtstmonial{display: none;}
+.showteacher{display: none;}
+.showguardian{display: none;}
+.showsubject{display: none;}
+.showexam{display: none;}
+.showgrade{display: none;}
+.showfees{display: none;}
+
+.btnslider:hover{text-decoration: none;}
+.btnslider{}
+ul li{list-style: none;}
+
+/*settings*/
+.contentsection{min-height: 627px;}
+.logosection, .slidersectionadd,.testimonialsection,.teacherectionadd,.classsectionadd,.guardianectionadd,.studentsectionadd
+,.subjectsectionadd,.examsectionadd,.gradesectionadd,.studentprofile,.teacherprofile,.stdacademicinfo,.editTeacherSection,.manageDaysecion,.managePeriodTime,
+.manageVanusecion,.createRoutineSection,.stdclsRoutineSection{min-height: 620px;}
+
+.logo,.testimonial,.guardian,.teacher,.class,.student,.subject,.exam,.grade,.editTeacher,.manageDay,.managePeriod,.manageVanu,.createRoutine{margin-top: 80px;}
+.classfld,.sectionfld,.subjectfld{margin-top: 20px;}
+.examfld{margin-bottom: 10px}
+.managemarks{margin-top: 39px;}
+.samefld{
+    min-width: 245px;
+    height: 40px;
+    border: 2px solid #999;}
+.ttl{}
+.cmndiv{margin: 6px 10px;}
+.logofile{
+    background: #247AC0;
+    height: 30px;
+}
+.submitbtn{width: 140px;
+           height: 34px;
+           text-transform: uppercase;}
+.disable{
+    background: #C9302C;
+    color: #fff;
+}
+.disable:hover{color: #fff;}
+.sld{background: #000;
+     height: 32px;}
+.sld:hover{text-decoration: none;}
+.editbtn{margin: 2px;font-size: 8px;}
+.deletebtn{margin: 2px; font-size: 8px;}
+.input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group {
+    z-index: 2;
+    margin-left: 0px;
+    height: 33px;
+}
+.searchbtn{
+    margin-bottom: 20px;}
+.tpic {
+    height: 75px;
+    width: 75px;
+    background: #ddd;
+    padding: 5px;
+    border: 2px solid green;
+}
+.success{text-align: center;
+         background: #ddd;
+         font-size: 25px;
+         color: green;}
+.navbar-form {
+    width: auto;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-right: 0;
+    margin-left: 0;
+    border: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    float: right;
+}
+.samebtn{width: 28px;
+         padding: 2px;
+         margin: 0px;
+         font-size: 12px;
+         height: 24px;}
+.samebtnde{width: 44px;
+           padding: 3px;
+           margin: 0px;
+           font-size: 12px;
+           height: 24px;}
+.samemark {
+    width: 55px;
+    height: 32px;
+}
+.clswisestd{margin-top: 5px}
+.stdinfo {
+    width: 165px;
+    height: 35px;
+}
+.stdrollinfo{width: 65px;}
+.addmarks{margin-left: 769px;}
+.teacherpro{margin-top: 35px; background: #009BEB}
+.photo{}
+.teacherpic{height: 130px;
+            width: 130px;
+            border-radius: 50%;
+            padding: 0px;
+            margin: 0px;
+            border: 2px solid yellow;}
+.teachertxt{}
+.teachertxt h3{color: #fff;
+               text-transform: uppercase;
+               margin: 33px 0 10px 150px;
+               font-size: 25px;}
+.teacherothersinfo{
+    border: 1px solid #ddd;
+}
+.teachertbl{
+    width: 500px;
+}
+.studentpro{margin-top: 55px;
+            background: #3E99D1;}
+.stdphoto{}
+.stdpic{height: 145px;
+        width: 135;
+        border-radius: 50%;
+        border: 3px solid #999;}
+.stdtxt{}
+.stdtxt h3{margin: 55px 0 0 260px;
+           font-style: italic;
+           color: #fff;}
+.stdothersinfo{border: 1px solid #ddd;}
+.stdtbl{min-width: 400px;}
+.stdinfoaca{margin-top: 55px;}
+.samereporttitle{    background: #999;
+                     height: 32px;
+                     padding: 4px;
+                     color: #fff;
+                     font-size: 18px;
+}
+.aca_table{
+    width: 300px;
+    font-size: 12px;
+}
+.first_termi_table{
+    font-size: 12px;
+}
+.subtbl{    width: 580px;
+            font-size: 11px;}
+.subbtn{margin-left: 5px;}
+.dtl{height: 24px;
+     padding: 2px;}
+.teacherpicEdit img{    height: 150px;
+                        width: 152px;
+                        background: #ddd;
+                        padding: 3px;
+                        border: 2px solid #999;
+                        margin-top: 3px;}
+.editTeacherheading{    background: #ddd;
+                        height: 35px;
+                        padding: 5px;
+                        font-size: 15px;}
+.extid{    font-size: 20px;
+           color: green;
+           background: yellow;}
+.cPic{    font-size: 14px;}
+.tpicShow img{height: 100px;
+              width: 95px;
+              margin: 2px;
+              background: #999;
+              border: 2px solid #1A599B;
+              padding: 2px;}
+.red{color: red; margin-left: 10px; font-size: 19px;}
+.firstRow{margin-top: 80px;}
+.sameMenu {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+.sameMenu a{text-decoration: none;}
+.extrateachercls,.extraStudents,.extraSubjects,.extraClass,.extraClassRoutine{
+    border: 3px solid #ddd;
+    padding: 76px;
+    color: #fff;
+    font-size: 25px;
+}
+.extrateachercls:hover {
+    color: #fff;
+}
+.extraStudents:hover{
+    color: #fff;
+}
+.extraSubjects:hover{
+    color: #000;
+}
+.feesCollectionSection{
+
+}
+.feesCollection{
+    margin-top: 30px;
+    margin-left: 165px;
+}
+.feesCollection h3{
+    background: #B6CDE0;
+    height: 40px;
+    padding: 5px;
+}
+.extraTop{
+    margin-top: 10px;
+}
+.addBtn,.addBtnRemove{
+    cursor: pointer;
+}
+.feesAddSection{
+    margin-top: 60px;
+    margin-left: 250px;
+}
+.feesAdd{
+
+}
+/*.feesAdd h3{
+    background: #3879D9;
+    color: #fff;
+    height: 40px;
+    padding: 4px;
+}*/
+.stdClsArea{
+    margin-top: 40px;
+}
