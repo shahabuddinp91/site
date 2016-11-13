@@ -126,9 +126,12 @@ class Frontpagemodel extends CI_Model {
     }
 
     public function getPeriodClsSec($cls, $sec) {
-        $this->db->where('class_id',$cls);
-        $this->db->where('section_id',$sec);
+        $this->db->select('*');
+        $this->db->where('addroutine.class_id', $cls);
+        $this->db->where('addroutine.section_id', $sec);
+        $this->db->where('day', 1);
         $this->db->from('addroutine');
+        $this->db->join('addsubject', 'addsubject.subject_id=addroutine.subject_id');
         $query = $this->db->get();
         return $query->result();
     }

@@ -14,25 +14,15 @@
                                     <?php
                                 endforeach;
                                 ?>
-<!--                                <th>1st Period</th>
-                                <th>2nd Period</th>
-                                <th>3rd Period</th>
-                                <th>4th Period</th>
-                                <th>5th Period</th>
-                                <th>6th Period</th>
-                                <th>7th Period</th>
-                                <th>8th Period</th>-->
                             </tr>
                             <tr>
                                 <th><?php echo $allDay[0]->dayName; ?></th>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <?php foreach ($allPeriodClsSec as $singlesub):
+                                    ?>
+                                <td class="text-center"><?php echo $singlesub->subject_name; ?></td>
+                                    <?php
+                                endforeach;
+                                ?>
                             </tr>
                             <tr>
                                 <th><?php echo $allDay[1]->dayName; ?></th>
@@ -89,6 +79,17 @@
                                 <td></td>
                                 <td></td>
                             </tr>
+<!--                            <tr>
+                                <th><?php echo $allDay[6]->dayName; ?></th>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>-->
                         </table>
                     </div>
                 </div>
@@ -96,5 +97,10 @@
         </div>
     </div>
 </section>
-<?php echo $classid; ?>
-<?php echo $sectionID; ?>
+<?php // echo $getclassid;  ?>
+<?php // echo $sectionID; ?>
+<?php
+echo "<pre>";
+print_r($allPeriodClsSec);
+echo "</pre>";
+?>
