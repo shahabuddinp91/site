@@ -17,12 +17,15 @@
                             </tr>
                             <tr>
                                 <th><?php echo $allDay[0]->dayName; ?></th>
-                                <?php foreach ($allPeriodClsSec as $singlesub):
+                                <?php // foreach ($allPeriodClsSec as $singlesub):
                                     ?>
-                                <td class="text-center"><?php echo $singlesub->subject_name; ?></td>
+                                <!--<td class="text-center"><?php // echo $singlesub->subject_name; ?></td>-->
                                     <?php
-                                endforeach;
+//                                endforeach;
                                 ?>
+                                <td><?php echo $allPeriodClsSec[0]->subject_name?></td>
+                                <td><?php echo $allPeriodClsSec[1]->subject_name?></td>
+                                <td><?php // echo $allPeriodClsSec[2]->subject_name?></td>
                             </tr>
                             <tr>
                                 <th><?php echo $allDay[1]->dayName; ?></th>

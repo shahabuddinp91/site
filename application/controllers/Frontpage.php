@@ -410,29 +410,35 @@ class Frontpage extends CI_Controller {
     }
 
     public function stdClsRoutine() {
-        $data['baseurl'] = $this->baseurl;
+        if ($this->session->userdata('current_email')) {
+            $data['baseurl'] = $this->baseurl;
 //        its for all day collect
-        $data['allDay'] = $this->Frontpagemodel->getManageDay();
+            $data['allDay'] = $this->Frontpagemodel->getManageDay();
 //        its for all period time collect
-        $data['allPeriodTime'] = $this->Frontpagemodel->getManagePeriodTime();
+            $data['allPeriodTime'] = $this->Frontpagemodel->getManagePeriodTime();
+
+            $studentsinfo = $this->Frontpagemodel->studentsinfo($this->session->userdata('current_email'));
 //        its for all period class & section wise collect
 //        $data['allPeriodClsSec'] = $this->Frontpagemodel->getPeriodClsSec($cls, $sec);
-        
-        $studentsinfo = $this->Frontpagemodel->studentsinfo($this->session->userdata('current_email'));
-        foreach ($studentsinfo as $singleData) {
+            foreach ($studentsinfo as $singleData) {
 //            echo "<br>"; echo "<br>";
 //            echo "<pre>";
 //            print_r($singleData);
 //            echo "</pre>";
-            $data['classid'] = $singleData->class_id;
-            $data['sectionID'] = $singleData->section_id;
+                $data['classid'] = $singleData->class_id;
+                $data['sectionID'] = $singleData->section_id;
 //                $stdID = $singleData->student_id;
-        }
+            }
+//            $this->session->set_userdata('classid', '');
+            $data['allPeriodClsSec'] = $this->Frontpagemodel->getPeriodClsSec($data['classid'], $data['sectionID']);
 
-        $this->load->view('dashboard/header', $data);
-        $this->load->view('dashboard/sidebar', $data);
-        $this->load->view('dashboard/students/stdClsRoutintPage', $data);
-        $this->load->view('dashboard/footer', $data);
+            $this->load->view('dashboard/header', $data);
+            $this->load->view('dashboard/sidebar', $data);
+            $this->load->view('dashboard/students/stdClsRoutintPage', $data);
+            $this->load->view('dashboard/footer', $data);
+        } else {
+            redirect('Frontpage/studentlogin');
+        }
     }
 
 }
