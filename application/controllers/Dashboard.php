@@ -1356,6 +1356,26 @@ class Dashboard extends CI_Controller {
             redirect('Dashboard/testimonialList');
         }
     }
+    public function updateTestimonial(){
+        if ($this->input->is_ajax_request()) {
+            $testi_id = $this->input->post('testi_td');
+            $title = $this->input->post('title');
+            $discription = $this->input->post('discription');
+            $data = array(
+                'title' => $username,
+                'description' => $email
+            );
+
+            if (!$this->db->where('testimonial_id', (int) $testi_id)->update('testimonial', $data)) {
+                echo 'problem';
+            } else {
+                $query = $this->db->where('testimonial_id', (int) $testi_id)->get('testimonial');
+                $user = $query->row();
+                echo $user->title . '|' . $user->description;
+            }
+        }
+        
+    }
 
     public function deleteTestimonial($testimonialid) {
         $data['baseurl'] = $this->baseurl;

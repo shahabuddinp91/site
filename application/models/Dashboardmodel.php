@@ -460,12 +460,6 @@ class Dashboardmodel extends CI_Model {
     }
 
     public function getRoomid($roomid) {
-//        $this->db->where('campus_id',$roomid);
-//        $this->db->select('*');
-//        $this->db->from('managevanu');
-//        $this->db->join('managecampus', 'managecampus.campus_id=managevanu.campus_id');
-//        $query = $this->db->get();
-//        return $query->result();
         $this->db->where('campus_id',$roomid);
         $query = $this->db->get('managevanu');
         return $query->result();
@@ -483,6 +477,8 @@ class Dashboardmodel extends CI_Model {
         $this->db->join('addteacher', 'addteacher.teacher_id=addroutine.teacher_id');
         $this->db->join('manageday', 'manageday.day_id=addroutine.day');
         $this->db->join('managecampus', 'managecampus.campus_id=addroutine.campus_name');
+        $this->db->join('managetime', 'managetime.time_id=addroutine.time_from');
+        $this->db->join('managevanu', 'managevanu.vanu_id=addroutine.room_no');
         $this->db->limit($limit, $start);
         $query = $this->db->order_by('routine_id', 'desc')->get();
         return $query->result();

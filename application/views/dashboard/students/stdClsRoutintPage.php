@@ -24,7 +24,7 @@
 //                                endforeach;
                                 ?>
                                 <td><?php echo $allPeriodClsSec[0]->subject_name?></td>
-                                <td><?php echo $allPeriodClsSec[1]->subject_name?></td>
+                                <td><?php // echo $allPeriodClsSec[1]->subject_name?></td>
                                 <td><?php // echo $allPeriodClsSec[2]->subject_name?></td>
                             </tr>
                             <tr>

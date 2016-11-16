@@ -161,6 +161,10 @@
                                             $("#roomNo").html(rid);
                                         });
                                     });
+//                                    $("#roomNo").change(function (){
+//                                        var test = $(this).val();
+//                                        alert(test);
+//                                    })
                                 });
                             </script>
                             <div class="form-group col-sm-6">
@@ -190,6 +194,7 @@
             <!--modal close-->
             <div class="listRoutine">
                 <div class="well">
+                    <?php if($allroutine) {?>
                     <table class="table table-hover">
                         <tr>
                             <th>Sl No</th>
@@ -198,8 +203,7 @@
                             <th>Subject Name</th>
                             <th>Teacher Name</th>
                             <th>Day</th>
-                            <th>Start Time</th>
-                            <th>End Time</th>
+                            <th>Class Time</th>
                             <th>Campus Name</th>
                             <th>Room No</th>
                             <th>Action</th>
@@ -216,10 +220,9 @@
                                 <td><?php echo $singleroutine->subject_name; ?></td>
                                 <td><?php echo $singleroutine->teacher_name; ?></td>
                                 <td><?php echo $singleroutine->dayName; ?></td>
-                                <td><?php echo $singleroutine->time_from; ?></td>
-                                <td><?php echo $singleroutine->time_to; ?></td>
+                                <td><?php echo $singleroutine->time; ?></td>
                                 <td><?php echo $singleroutine->campusName; ?></td>
-                                <td><?php echo $singleroutine->room_no; ?></td>
+                                <td><?php echo $singleroutine->roomno; ?></td>
                                 <td>
                                     <?php echo anchor('Dashboard/manageDayEdit', ' ', array('class' => 'glyphicon glyphicon-edit btn btn-primary btn-lg samebtn')); ?> |
 
@@ -233,6 +236,9 @@
                         endforeach;
                         ?>
                     </table>
+                    <?php }else {
+                        echo "<h4 class='text-center' style='color:red'>Data not found</h4>";
+                    }?>
                     <?php echo $pagination; ?>
                 </div>
             </div>

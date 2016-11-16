@@ -3,7 +3,7 @@
     <?php
     foreach ($allroomid as $singleRoom):
         ?>
-        <option value="<?php echo $singleRoom->roomno; ?>">
+        <option value="<?php echo $singleRoom->vanu_id; ?>">
             <?php echo $singleRoom->roomno; ?>
         </option>
         <?php
