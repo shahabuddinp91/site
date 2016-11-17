@@ -54,7 +54,7 @@
                                     1
                                 </td>
                                 <td>
-                                    <select name="feesID[]" class="form-control" id="feesID">
+                                    <select name="feesID" class="form-control" id="feesID">
                                         <option value="">Select One</option>
                                         <?php foreach ($allFees as $singleData):
                                             ?>
@@ -77,12 +77,12 @@
                             });
                         </script>
                         <td>
-                            <select name="amount[]" id="amount" class="form-control">
+                            <select name="amount" id="amount" class="form-control">
                                 <option value="">Select One</option>
                             </select>                         
                         </td>
                         <td>
-                            <input type="text" name="paidAmount[]" placeholder="Enter Paid Amount!" id="paidAmount" class="form-control">
+                            <input type="text" name="paidAmount" placeholder="Enter Paid Amount!" id="paidAmount" class="form-control">
                         </td>
                         </tr>
                         <tr id='addr1'></tr>
@@ -121,9 +121,9 @@
         var i = 1;
         $("#add_row").click(function () {
             $('#addr' + i).html("<td>" + (i + 1) + "</td>\n\
-    <td><select name='feesID[]' id='feesID' class='form-control input-md exfeesID'><option value=''>Select One</option><?php foreach ($allFees as $singleData): ?><option value='<?php echo $singleData->fees_id; ?>'><?php echo $singleData->fees_name; ?></option><?php endforeach; ?></select></td>\n\
-    <td><select name='amount[]' id='amount' class='form-control input-md examount'><option value=''>Select One</option></select></td>\n\
-<td><input type='text'  name='paidAmount[]' id='paidAmount' class='form-control input-md' placeholder='Enter Paid Amount!'></td>");
+    <td><select name='feesID"+ i +"' id='feesID' class='form-control input-md exfeesID'><option value=''>Select One</option><?php foreach ($allFees as $singleData): ?><option value='<?php echo $singleData->fees_id; ?>'><?php echo $singleData->fees_name; ?></option><?php endforeach; ?></select></td>\n\
+    <td><select name='amount"+ i +"'  id='amount' class='form-control input-md examount'><option value=''>Select One</option></select></td>\n\
+<td><input type='text'  name='paidAmount" + i +"' id='paidAmount' class='form-control input-md' placeholder='Enter Paid Amount!'></td>");
 
             //        its for dynamic row amount add
             $(".exfeesID").change(function () {

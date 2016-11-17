@@ -1358,12 +1358,14 @@ class Dashboard extends CI_Controller {
     }
     public function updateTestimonial(){
         if ($this->input->is_ajax_request()) {
-            $testi_id = $this->input->post('testi_td');
+            $testi_id = $this->input->post('testi_id');
             $title = $this->input->post('title');
             $discription = $this->input->post('discription');
+            $author = $this->input->post('author');
             $data = array(
-                'title' => $username,
-                'description' => $email
+                'title' => $title,
+                'description' => $discription,
+                'name' => $author,
             );
 
             if (!$this->db->where('testimonial_id', (int) $testi_id)->update('testimonial', $data)) {
@@ -1371,10 +1373,9 @@ class Dashboard extends CI_Controller {
             } else {
                 $query = $this->db->where('testimonial_id', (int) $testi_id)->get('testimonial');
                 $user = $query->row();
-                echo $user->title . '|' . $user->description;
+                echo $user->title . '|' . $user->description . '|' . $user->name;
             }
         }
-        
     }
 
     public function deleteTestimonial($testimonialid) {
