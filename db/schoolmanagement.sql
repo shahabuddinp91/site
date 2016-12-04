@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2016 at 08:05 AM
+-- Generation Time: Dec 04, 2016 at 11:36 AM
 -- Server version: 10.1.13-MariaDB
--- PHP Version: 7.0.8
+-- PHP Version: 5.6.20
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -70,7 +70,45 @@ CREATE TABLE `addfees` (
 INSERT INTO `addfees` (`fees_id`, `fees_name`, `fees_amount`, `month`, `year`, `created`, `updated`, `deleted`) VALUES
 (1, 'Registration Fees', '800', '', '', '', '', ''),
 (2, 'Form Fee ', '100', '', '', '', '', ''),
-(3, 'Admit Card Fee', '150', '', '', '', '', '');
+(3, 'Exam Fees', '500', '', '', '', '', ''),
+(4, 'Others', '200', '', '', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `addfeescollection`
+--
+
+CREATE TABLE `addfeescollection` (
+  `stdfees_id` int(20) NOT NULL,
+  `class_id` int(20) NOT NULL,
+  `section_id` int(20) NOT NULL,
+  `roll_no` int(20) NOT NULL,
+  `exam_id` int(20) NOT NULL,
+  `fees_id` int(20) NOT NULL,
+  `amount` varchar(20) NOT NULL,
+  `totalAmount` double NOT NULL,
+  `paidamount` varchar(20) NOT NULL,
+  `month` varchar(50) NOT NULL,
+  `year` varchar(50) NOT NULL,
+  `created` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `addfeescollection`
+--
+
+INSERT INTO `addfeescollection` (`stdfees_id`, `class_id`, `section_id`, `roll_no`, `exam_id`, `fees_id`, `amount`, `totalAmount`, `paidamount`, `month`, `year`, `created`) VALUES
+(1, 24, 8, 1, 6, 1, '800', 1400, '1300', 'December', '2016', '04-12-2016'),
+(2, 24, 8, 1, 6, 2, '100', 1400, '1300', 'December', '2016', '04-12-2016'),
+(3, 24, 8, 1, 6, 3, '500', 1400, '1300', 'December', '2016', '04-12-2016'),
+(4, 28, 6, 3, 6, 1, '800', 900, '800', 'December', '2016', '04-12-2016'),
+(5, 28, 6, 3, 6, 2, '100', 900, '800', 'December', '2016', '04-12-2016'),
+(6, 24, 15, 1, 6, 2, '100', 300, '250', 'December', '2016', '04-12-2016'),
+(7, 24, 15, 1, 6, 4, '200', 300, '250', 'December', '2016', '04-12-2016'),
+(8, 24, 15, 1, 7, 1, '800', 800, '700', 'December', '2016', '04-12-2016'),
+(9, 24, 15, 1, 6, 2, '100', 600, '500', 'December', '2016', '04-12-2016'),
+(10, 24, 15, 1, 6, 3, '500', 600, '500', 'December', '2016', '04-12-2016');
 
 -- --------------------------------------------------------
 
@@ -99,7 +137,8 @@ CREATE TABLE `addroutine` (
 --
 
 INSERT INTO `addroutine` (`routine_id`, `year`, `class_id`, `section_id`, `subject_id`, `teacher_id`, `day`, `time_from`, `time_to`, `campus_name`, `room_no`, `month`, `created`) VALUES
-(1, '2016', 24, 8, 1, 5, 1, 8, 9, 4, 1, 0, 7);
+(5, '2016', 24, 8, 1, 5, 1, 8, 8, 4, 7, 0, 29),
+(6, '2016', 28, 6, 3, 9, 1, 8, 8, 4, 8, 0, 29);
 
 -- --------------------------------------------------------
 
@@ -163,7 +202,8 @@ INSERT INTO `addstudent` (`student_id`, `student_name`, `guardian_name`, `class_
 (3, 'student1', 'Md. x', 28, 6, '1', '09/04/2016', 'Male', 'Dhaka', '0178965362', 'student1@gmail.com', '123', 'BCA160904030910.jpg', '2016', 'September', '2016-09-04', NULL, NULL),
 (4, 'student2', 'Md. Y', 24, 8, '1', '09/04/2016', 'Female', 'Khulna', '01285962', 'student2@gmail.com', '159', 'BCA160904030909.jpg', '2016', 'September', '2016-09-04', NULL, NULL),
 (5, 'student3', 'Md. Z', 28, 6, '2', '09/05/2016', 'Male', 'Chittagong', '0125896', 'student3@gmail.com', '123', 'BCA160905060929.png', '2016', 'September', '2016-09-05', NULL, NULL),
-(6, 'Student 4', 'Parent', 28, 6, '3', '09/06/2016', 'Male', 'Dhaka', '0125896', 'student4@gmail.com', '123', 'BCA160906120959.jpg', '2016', 'September', '2016-09-05', NULL, NULL);
+(6, 'Student 4', 'Parent', 28, 6, '3', '09/06/2016', 'Male', 'Dhaka', '0125896', 'student4@gmail.com', '123', 'BCA160906120959.jpg', '2016', 'September', '2016-09-05', NULL, NULL),
+(7, 'ali', 'ali Hossain', 24, 15, '1', '09/04/2016', 'Male', 'Dhaka', '01896532451', 'ali@gmail.com', '123', 'BCA161204031255.jpg', '2016', 'December', '2016-12-04', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -344,8 +384,7 @@ INSERT INTO `manageday` (`day_id`, `dayName`) VALUES
 (3, 'Monday'),
 (4, 'Tuesday'),
 (5, 'Wednesday'),
-(6, 'Thursday'),
-(7, 'Friday');
+(6, 'Thursday');
 
 -- --------------------------------------------------------
 
@@ -542,7 +581,7 @@ CREATE TABLE `testimonial` (
 
 INSERT INTO `testimonial` (`testimonial_id`, `title`, `description`, `name`, `created`, `updated`, `deleted`) VALUES
 (2, 'Second Testimonial', ' Hi ProblemHi Problem Hi Problem Hi Problem Hi Problem Hi Problem Hi Problem', 'Rahim', '2016-08-31', NULL, NULL),
-(4, 'Testimonial', 'This website template has been designed by Free Website Templates for you, for free. You can replace all this text with your own text. You can remove any link to our website from this website template, you''re free to use this website template without link', 'Karim ullah', '2016-08-31', NULL, NULL);
+(4, 'Testimonial 1', '  I love you', 'Karim 1', '2016-08-31', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -584,6 +623,12 @@ ALTER TABLE `addclass`
 --
 ALTER TABLE `addfees`
   ADD PRIMARY KEY (`fees_id`);
+
+--
+-- Indexes for table `addfeescollection`
+--
+ALTER TABLE `addfeescollection`
+  ADD PRIMARY KEY (`stdfees_id`);
 
 --
 -- Indexes for table `addroutine`
@@ -652,12 +697,6 @@ ALTER TABLE `managemarks`
   ADD PRIMARY KEY (`marks_id`);
 
 --
--- Indexes for table `managetime`
---
-ALTER TABLE `managetime`
-  ADD PRIMARY KEY (`time_id`);
-
---
 -- Indexes for table `managevanu`
 --
 ALTER TABLE `managevanu`
@@ -712,12 +751,17 @@ ALTER TABLE `addclass`
 -- AUTO_INCREMENT for table `addfees`
 --
 ALTER TABLE `addfees`
-  MODIFY `fees_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `fees_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `addfeescollection`
+--
+ALTER TABLE `addfeescollection`
+  MODIFY `stdfees_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `addroutine`
 --
 ALTER TABLE `addroutine`
-  MODIFY `routine_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `routine_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `addsection`
 --
@@ -727,7 +771,7 @@ ALTER TABLE `addsection`
 -- AUTO_INCREMENT for table `addstudent`
 --
 ALTER TABLE `addstudent`
-  MODIFY `student_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `student_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `addsubject`
 --
@@ -762,17 +806,12 @@ ALTER TABLE `managecampus`
 -- AUTO_INCREMENT for table `manageday`
 --
 ALTER TABLE `manageday`
-  MODIFY `day_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `day_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `managemarks`
 --
 ALTER TABLE `managemarks`
   MODIFY `marks_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
---
--- AUTO_INCREMENT for table `managetime`
---
-ALTER TABLE `managetime`
-  MODIFY `time_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `managevanu`
 --

@@ -31,7 +31,7 @@
                 });
             });
             </script>-->
-            <form class="navbar-form" role="search" action="<?php echo $baseurl.'index.php/Dashboard/searchClass'?>" method="post">
+            <form class="navbar-form" role="search" action="<?php echo $baseurl . 'index.php/Dashboard/searchClass' ?>" method="post">
                 <div class="input-group">
                     <input type="text" class="form-control search" placeholder="Class Name or Numeric No" name="search">
                     <span class="input-group-btn">
@@ -54,28 +54,28 @@
                                 <th>Action</th>
                             </tr>
                             <?php
-                            if($allclasslist){
-                            $sl = 0;
-                            foreach ($allclasslist as $single):
-                                $sl++;
-                                ?>
-                                <tr>
-                                    <td><?php echo $sl; ?></td>
-                                    <td><?php echo $single->class_name; ?></td>
-                                    <td><?php echo $single->numeric_no; ?></td>
-                                    <td>
-                                        <?php echo anchor('',' ',array('class'=>'glyphicon glyphicon-edit btn btn-primary samebtn'));?> |
-                                        
-                                        <?php
-                                        $onclick = array('onclick'=>"return confirm('Do you want to delete it?')");
-                                        echo anchor('Dashboard/classDelete/'.$single->class_id, '<span class="glyphicon glyphicon-trash btn btn-danger samebtn" aria-hidden="true"></span>' , $onclick);
-                                        ?>
-                                    </td>
-                                </tr>
-                                <?php
-                            endforeach;
-                            }else{
-                                  echo "Data Not Found!";
+                            if ($allclasslist) {
+                                $sl = 0;
+                                foreach ($allclasslist as $single):
+                                    $sl++;
+                                    ?>
+                                    <tr>
+                                        <td><?php echo $sl; ?></td>
+                                        <td><?php echo $single->class_name; ?></td>
+                                        <td><?php echo $single->numeric_no; ?></td>
+                                        <td>
+                                            <?php echo anchor('', ' ', array('class' => 'glyphicon glyphicon-edit btn btn-primary samebtn')); ?> |
+
+                                            <?php
+                                            $onclick = array('onclick' => "return confirm('Do you want to delete it?')");
+                                            echo anchor('Dashboard/classDelete/' . $single->class_id, '<span class="glyphicon glyphicon-trash btn btn-danger samebtn" aria-hidden="true"></span>', $onclick);
+                                            ?>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                endforeach;
+                            }else {
+                                echo "Data Not Found!";
                             }
                             ?>
                         </table>
@@ -108,7 +108,7 @@
                                     <input type="text" id="n_no" name="n_no" class="samefld" placeholder="Write Numeric No!">
                                 </div>
                             </div>
-                           
+
                             <div class="form-group cmndiv">
                                 <label for="" class="col-md-offset-2 col-md-2 ttl"></label>
                                 <div class="col-md-6">

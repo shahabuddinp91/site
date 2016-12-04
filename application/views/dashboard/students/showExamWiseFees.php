@@ -51,8 +51,8 @@ endforeach;
                         </div>
                         <div class="row">
                             <div class="examwiseresult">
-                                <p class="samereporttitle">Exam Wise Grading Report</p>
-                                <?php echo form_open('Frontpage/stdexamwisesubject', array('class' => '')); ?>
+                                <p class="samereporttitle">Exam Wise Financial Report</p>
+                                <?php echo form_open('Frontpage/stdexamwiseFinance', array('class' => '')); ?>
                                 <table class="" >
                                     <tr>
                                         <td>Select Exam</td>
@@ -70,7 +70,7 @@ endforeach;
                                             </select>
                                         </td>
                                         <td>
-                                            <input type="submit" name="submit" value="Submit" class="btn btn-primary subbtn">
+                                            <input type="submit" name="submit" value="Submit" class="btn btn-success subbtn">
                                         </td>
                                     </tr>
                                 </table>
@@ -78,26 +78,57 @@ endforeach;
                             </div>
                         </div>
                         <div class="row">
-                            <div class="subjectResult">
-                                <?php if ($allmarks) { ?>
-                                    <table class="table subtbl" >
+                            <div class="subjectResult col-md-6">
+                                <?php if ($allFinance) { ?>
+                                    <table class="table subtbl">
                                         <tr>
-                                            <th>Subject Name</th>
-                                            <th>Marks</th>
-                                            <th>Grade</th>
-                                            <th>Point</th>
+                                            <th>Fees Name</th>
+                                            <th>Amount</th>
+    <!--                                            <th>Total Amount</th>
+                                            <th>Paid Amount</th>-->
 
                                         </tr>
                                         <?php
-                                        foreach ($allmarks as $singleSub):
+                                        foreach ($allFinance as $singleSub):
                                             ?>
                                             <tr>
-                                                <td><?php echo $singleSub->subject_name; ?></td>
-                                                <td><?php echo $singleSub->marks; ?></td>
-                                                <td><?php echo $singleSub->letter_grade; ?></td>
+                                                <td><?php echo $singleSub->fees_name; ?></td>
+                                                <td><?php echo $singleSub->amount; ?></td>
+        <!--                                                <td><?php echo $singleSub->totalAmount; ?></td>
+                                                <td><?php echo $singleSub->paidamount; ?></td>-->
 
-                                                <td><?php echo $singleSub->grade_point; ?></td>
+                                            </tr>
 
+                                            <?php
+                                        endforeach;
+                                    }else {
+                                        echo '<h4>Data Not Found!';
+                                    }
+                                    ?>
+<!--                                    <tr> 
+                                        <td>Total Amount</td>
+                                        <td><?php echo $singleSub->totalAmount; ?></td>
+                                        <td>Paid Amount</td>
+                                        <td><?php echo $singleSub->paidamount; ?></td>
+                                    </tr>-->
+                                </table>
+                            </div>
+                            <div class="subjectResult col-md-6">
+                                <?php if ($allFinance) { ?>
+                                    <table class="table subtbl">
+                                        <tr>
+                                            <th>Fees Date</th>
+                                            <th>Total Amount</th>
+                                            <th>Paid Amount</th>
+
+                                        </tr>
+                                        <?php
+                                        foreach ($allFinance as $singleSub):
+                                            ?>
+                                            <tr>
+                                                <td><?php echo $singleSub->month; ?></td>
+                                                <td><?php echo $singleSub->totalAmount; ?></td>
+                                                <td><?php echo $singleSub->paidamount; ?></td>
                                             </tr>
                                             <?php
                                         endforeach;
@@ -105,6 +136,12 @@ endforeach;
                                         echo '<h4>Data Not Found!';
                                     }
                                     ?>
+<!--                                    <tr> 
+                                        <td>Total Amount</td>
+                                        <td><?php echo $singleSub->totalAmount; ?></td>
+                                        <td>Paid Amount</td>
+                                        <td><?php echo $singleSub->paidamount; ?></td>
+                                    </tr>-->
                                 </table>
                             </div>
                         </div>
@@ -115,3 +152,9 @@ endforeach;
     </div>
 </section>
 
+<?php
+// echo $getClassID.', ' .$rollNo.', ' .$examid;
+echo '<pre>';
+print_r($stdAcademicInfo);
+echo '</pre>';
+?>

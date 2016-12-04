@@ -38,7 +38,7 @@ endforeach;
                                         <tr>
                                             <td>Class</td>
                                             <td>:</td>
-                                            <td name="clsname"><?php echo $single->class_name; ?></td>
+                                            <td><?php echo $single->class_name; ?></td>
                                         </tr>
                                         <tr>
                                             <td>Section</td>
@@ -51,8 +51,8 @@ endforeach;
                         </div>
                         <div class="row">
                             <div class="examwiseresult">
-                                <p class="samereporttitle">Exam Wise Grading Report</p>
-                                <?php echo form_open('Frontpage/stdexamwisesubject', array('class' => '')); ?>
+                                <p class="samereporttitle">Exam Wise Financial Report</p>
+                                <?php echo form_open('Frontpage/stdexamwiseFinance',array('class'=>''));?>
                                 <table class="" >
                                     <tr>
                                         <td>Select Exam</td>
@@ -60,52 +60,21 @@ endforeach;
                                         <td>
                                             <select class="form-control" name="examlist">
                                                 <option value="">Select One</option>
-                                                <?php
+                                                <?php 
                                                 foreach ($allexamlist as $singleexam):
                                                     ?>
-                                                    <option value="<?php echo $singleexam->exam_id; ?>"><?php echo $singleexam->exam_name; ?></option>
-                                                    <?php
+                                                <option value="<?php echo $singleexam->exam_id; ?>"><?php echo $singleexam->exam_name; ?></option>
+                                                <?php
                                                 endforeach;
                                                 ?>
                                             </select>
                                         </td>
                                         <td>
-                                            <input type="submit" name="submit" value="Submit" class="btn btn-primary subbtn">
+                                            <input type="submit" name="submit" value="Submit" class="btn btn-success">
                                         </td>
                                     </tr>
                                 </table>
-                                <?php echo form_close(); ?>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="subjectResult">
-                                <?php if ($allmarks) { ?>
-                                    <table class="table subtbl" >
-                                        <tr>
-                                            <th>Subject Name</th>
-                                            <th>Marks</th>
-                                            <th>Grade</th>
-                                            <th>Point</th>
-
-                                        </tr>
-                                        <?php
-                                        foreach ($allmarks as $singleSub):
-                                            ?>
-                                            <tr>
-                                                <td><?php echo $singleSub->subject_name; ?></td>
-                                                <td><?php echo $singleSub->marks; ?></td>
-                                                <td><?php echo $singleSub->letter_grade; ?></td>
-
-                                                <td><?php echo $singleSub->grade_point; ?></td>
-
-                                            </tr>
-                                            <?php
-                                        endforeach;
-                                    }else {
-                                        echo '<h4>Data Not Found!';
-                                    }
-                                    ?>
-                                </table>
+                                <?php echo form_close();?>
                             </div>
                         </div>
                     </div>                    
@@ -114,4 +83,3 @@ endforeach;
         </div>
     </div>
 </section>
-

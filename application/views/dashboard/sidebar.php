@@ -17,6 +17,9 @@
                     <li>
                         <?php echo anchor('Frontpage/stdExamwiseResult', 'Exam Wise Result', array('title' => 'Exam Wise Result', 'class' => 'sameli')); ?>
                     </li>
+                    <li>
+                        <?php echo anchor('Frontpage/stdFinancialinfo', 'Financial Information', array('title' => 'Financial Information', 'class' => 'sameli')); ?>
+                    </li>
                 </ul>
             <?php } else { ?>
                 <!--its for check teacher kina-->

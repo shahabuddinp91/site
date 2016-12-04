@@ -477,8 +477,8 @@ class Dashboardmodel extends CI_Model {
         $this->db->join('addteacher', 'addteacher.teacher_id=addroutine.teacher_id');
         $this->db->join('manageday', 'manageday.day_id=addroutine.day');
         $this->db->join('managecampus', 'managecampus.campus_id=addroutine.campus_name');
-        $this->db->join('managetime', 'managetime.time_id=addroutine.time_from');
-        $this->db->join('managevanu', 'managevanu.vanu_id=addroutine.room_no');
+//        $this->db->join('managetime', 'managetime.time_id=addroutine.time');
+//        $this->db->join('managevanu', 'managevanu.vanu_id=addroutine.time');
         $this->db->limit($limit, $start);
         $query = $this->db->order_by('routine_id', 'desc')->get();
         return $query->result();

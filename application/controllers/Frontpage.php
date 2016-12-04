@@ -166,9 +166,13 @@ class Frontpage extends CI_Controller {
             foreach ($studentsinfo as $singleData) {
                 $classid = $singleData->class_id;
                 $stdID = $singleData->student_id;
+                $rollNo = $singleData->roll_no;
+                $sectionId = $singleData->section_id;
             }
             $this->session->set_userdata('class', $classid);
             $this->session->set_userdata('studentsID', $stdID);
+            $this->session->set_userdata('rollNo',$rollNo);
+            $this->session->set_userdata('sectionID',$sectionId);
 
 
             $data['studentsinfo'] = $studentsinfo;
@@ -435,6 +439,43 @@ class Frontpage extends CI_Controller {
             $this->load->view('dashboard/header', $data);
             $this->load->view('dashboard/sidebar', $data);
             $this->load->view('dashboard/students/stdClsRoutintPage', $data);
+            $this->load->view('dashboard/footer', $data);
+        } else {
+            redirect('Frontpage/studentlogin');
+        }
+    }
+    public function stdFinancialinfo() {
+        if ($this->session->userdata('current_email')) {
+            $data['baseurl'] = $this->baseurl;
+            $stdAcademicInfo = $this->Frontpagemodel->studentsinfo($this->session->userdata('current_email'));
+            $data['stdAcademicInfo'] = $stdAcademicInfo;
+            //its for exam list call
+            $data['allexamlist'] = $this->Dashboardmodel->getexam();
+            $this->load->view('dashboard/header', $data);
+            $this->load->view('dashboard/sidebar', $data);
+            $this->load->view('dashboard/students/stdFinancialinfoPage', $data);
+            $this->load->view('dashboard/footer', $data);
+        } else {
+            redirect('Frontpage/studentlogin');
+        }
+    }
+     public function stdexamwiseFinance() {
+        if ($this->session->userdata('current_email')) {
+            $data['baseurl'] = $this->baseurl;
+            $stdAcademicInfo = $this->Frontpagemodel->studentsinfo($this->session->userdata('current_email'));
+            $data['stdAcademicInfo'] = $stdAcademicInfo;
+            //its for exam list call 
+            $data['allexamlist'] = $this->Dashboardmodel->getexam();
+            $examid = $this->input->post('examlist');
+
+            $getClassID = $this->session->userdata('class');
+            $rollNo = $this->session->userdata('rollNo');
+            $sectionID = $this->session->userdata('sectionID');
+
+            $data['allFinance'] = $this->Frontpagemodel->getFinance($getClassID,$sectionID, $rollNo, $examid);
+            $this->load->view('dashboard/header', $data);
+            $this->load->view('dashboard/sidebar', $data);
+            $this->load->view('dashboard/students/showExamWiseFees', $data);
             $this->load->view('dashboard/footer', $data);
         } else {
             redirect('Frontpage/studentlogin');

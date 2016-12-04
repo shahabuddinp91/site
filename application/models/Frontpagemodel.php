@@ -135,5 +135,16 @@ class Frontpagemodel extends CI_Model {
         $query = $this->db->get();
         return $query->result();
     }
+      public function getFinance($getClassID,$sectionID, $rollNo, $examid){
+        $this->db->select('*');
+        $this->db->from('addfeescollection');
+        $this->db->join('addfees', 'addfees.fees_id=addfeescollection.fees_id');
+        $this->db->where('addfeescollection.class_id', $getClassID);
+        $this->db->where('addfeescollection.section_id', $sectionID);
+        $this->db->where('addfeescollection.roll_no', $rollNo);
+        $this->db->where('addfeescollection.exam_id', $examid);
+        $query = $this->db->get();
+        return $query->result();
+    }
 
 }

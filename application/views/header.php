@@ -7,7 +7,7 @@
 <!--        <link rel="stylesheet" href="<?php echo $baseurl; ?>asset/fonts/font-awesome.min.css">
         <link rel="stylesheet" href="<?php echo $baseurl; ?>asset/fonts/font-awesome.css">-->
         <script src="<?php echo $baseurl; ?>asset/js/bootstrap.js"></script>
-        <script src="<?php echo $baseurl; ?>asset/js/bootstrap.min.js"></script>
+        <!--<script src="<?php echo $baseurl; ?>asset/js/bootstrap.min.js"></script>-->
         <script src="<?php echo $baseurl; ?>asset/js/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>        
         <!--<script src='//cdn.tinymce.com/4/tinymce.min.js'></script>-->

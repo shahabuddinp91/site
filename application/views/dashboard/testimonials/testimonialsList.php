@@ -108,23 +108,18 @@
             var testi_td = $(this).parent().siblings('.title');
             var discrip_td = $(this).parent().siblings('.discription');
             var author_td = $(this).parent().siblings('.author');
-//            var author_td = $(this).parent().siblings('.author');
             var title = testi_td.text();
             var discription = discrip_td.text();
             var author = author_td.text();
-//            var author = author_td.text();
             var title_input = '<input class="form-control title_box" name="title" value="' + title + '"/>';
             var discription_input = '<textarea class="form-control discription_box" name="discription" rows=5 > ' + discription + '</textarea>';
             var author_input = '<input class="form-control author_box" name="author" value="' + author + '"/>';
-//            var author_input = '<input class="form-control author_box" name="author" value =' + author +' />';
             $(this).parent().find('.title_in').val(title);
             $(this).parent().find('.discription_in').val(discription);
             $(this).parent().find('.author_in').val(author);
-//            $(this).parent().find('author_in').val(author);
             testi_td.html(title_input);
             discrip_td.html(discription_input);
             author_td.html(author_input);
-//            author_td.html(author_input);
         });
 //    when click on cancel
         $('.cancel').click(function () {

@@ -618,6 +618,24 @@ class Dashboard extends CI_Controller {
         }
     }
 
+    public function updateSection() {
+        if ($this->input->is_ajax_request()) {
+            $sec_id = $this->input->post('sec_id');
+            $section = $this->input->post('section');
+            $data = array(
+                'section_name' => $section,
+            );
+
+            if (!$this->db->where('section_id', (int) $sec_id)->update('addsection', $data)) {
+                echo 'problem';
+            } else {
+                $query = $this->db->where('section_id', (int) $sec_id)->get('addsection');
+                $user = $query->row();
+                echo $user->section_name;
+            }
+        }
+    }
+
     public function sectionDelete($sectionid) {
         $data['baseurl'] = $this->baseurl;
         if ($sectionid != '') {
@@ -1356,7 +1374,8 @@ class Dashboard extends CI_Controller {
             redirect('Dashboard/testimonialList');
         }
     }
-    public function updateTestimonial(){
+
+    public function updateTestimonial() {
         if ($this->input->is_ajax_request()) {
             $testi_id = $this->input->post('testi_id');
             $title = $this->input->post('title');
@@ -1710,13 +1729,16 @@ class Dashboard extends CI_Controller {
         $data['allclass'] = $this->Dashboardmodel->getclass();
 //        its for fees 
         $data['allFees'] = $this->Dashboardmodel->getFees();
-        
+//its for exam list call
+        $data['allexamlist'] = $this->Dashboardmodel->getexam();
+
 
         $this->load->view('dashboard/header', $data);
         $this->load->view('dashboard/sidebar', $data);
         $this->load->view('dashboard/feesCollection/feesCollectionPage', $data);
         $this->load->view('dashboard/footer', $data);
     }
+
     public function ajax_feesAmount($fid) {
         $this->load->model('Dashboardmodel');
         $data['allFeesAmt'] = $this->Dashboardmodel->getAmount($fid);
@@ -1792,6 +1814,59 @@ class Dashboard extends CI_Controller {
         }
         redirect('addFees');
     }
-    
+
+    public function insertstdFees() {
+        $data['baseurl'] = $this->baseurl;
+        $created = date('d-m-Y');
+        $month = date('F');
+        $year = date('Y');
+        $this->form_validation->set_rules('classname', 'Class Name', 'required');
+        $this->form_validation->set_rules('section_id', 'Section Name', 'required');
+        $this->form_validation->set_rules('stdID', 'Roll No', 'required');
+        $this->form_validation->set_rules('exam','Exam','required');
+        $this->form_validation->set_rules('feesID[]', 'Fees Name', 'required');
+        $this->form_validation->set_rules('amount[]', 'Amount', 'required');
+//        $this->form_validation->set_rules('paidAmount[]', 'Paid Amount', 'required');
+        $this->form_validation->set_rules('ttlamount','Total Amount','required');
+        $this->form_validation->set_rules('paidamount','Paid Amount','required');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->session->set_flashdata('msg', 'Please insert Correctly!');
+            redirect('Dashboard/addFeesCollection');
+        } else {
+            $feesID = $this->input->post('feesID[]');
+            $classname = $this->input->post('classname');
+            $section_id = $this->input->post('section_id');
+            $stdID = $this->input->post('stdID');
+            $exam_id = $this->input->post('exam');
+            $amount = $this->input->post('amount[]');
+            $totalamount = $this->input->post('ttlamount');
+            $paidamount = $this->input->post('paidamount');
+//            $paidAmount = $this->input->post('paidAmount[]');
+            $i = 0;
+            foreach ($feesID as $row) {
+                $record['class_id'] = $classname;
+                $record['section_id'] = $section_id;
+                $record['roll_no'] = $stdID;
+                $record['exam_id'] = $exam_id;
+                $record['fees_id'] = $feesID[$i];
+                $record['amount'] = $amount[$i];
+                $record['totalAmount'] = $totalamount;
+                $record['paidamount'] = $paidamount;
+//                $record['paidamount'] = $paidAmount[$i];
+                $record['month'] = $month;
+                $record['year'] = $year;
+                $record['created'] = $created;
+
+                $this->db->insert('addfeescollection', $record);
+                $i++;
+            }
+            $this->session->set_flashdata('success', 'Data save successfully!');
+            redirect('Dashboard/addFeesCollection');
+        }
+    }
+
+
+
 
 }

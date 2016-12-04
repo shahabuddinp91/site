@@ -1,3 +1,8 @@
+<style >
+    .supress_icon{
+        display: none;
+    }    
+</style>
 <section class="classsectionadd">
     <div class="col-md-offset-1 col-md-8 col-md-offset-1">
         <div class="class">
@@ -38,22 +43,28 @@
                                 <tr>
                                     <td><?php echo $sl; ?></td>
                                     <td><?php echo $single->class_name; ?></td>
-                                    <td><?php echo $single->section_name; ?></td>
+                                    <td class="section_fld"><?php echo $single->section_name; ?></td>
                                     <td><?php echo $single->teacher_name; ?></td>
                                     <td>
-                                        <?php echo anchor('', ' ', array('class' => 'glyphicon glyphicon-edit btn btn-primary samebtn')); ?> |
+                                        <span class="edit fa fa-pencil-square-o" data-toggle="tooltip" data-placement="top" title="Edit"></span>
+                                        <span class="save fa fa-save supress_icon" data-toggle="tooltip" data-placement="top" title="Save"></span>
+                                        <span class="cancel fa fa-times supress_icon" data-toggle="tooltip" data-placement="top" title="Cancel"></span>
 
-                                        <?php
-                                        $onclick = array('onclick' => "return confirm('Do you want to delete it?')");
-                                        echo anchor('Dashboard/sectionDelete/' . $single->section_id, '<span class="glyphicon glyphicon-trash btn btn-danger samebtn" aria-hidden="true"></span>', $onclick);
-                                        ?>
+                                        <input type="hidden" class="section_hdn" value="">
+                                        <input type="hidden" class="sec_id" value="<?php echo $single->section_id; ?>"
+
+                                               <?php
+                                               $onclick = array('onclick' => "return confirm('Do you want to delete it?')");
+                                               echo anchor('Dashboard/sectionDelete/' . $single->section_id, '<span class="fa fa-trash-o samebtn" aria-hidden="true"></span>', $onclick);
+                                               ?>
                                     </td>
-
                                 </tr>
                                 <?php
                             endforeach;
                             ?>
                         </table>
+                        <input id="base_url" type="hidden" value="<?php echo base_url(); ?>">
+                        <input id="site_url" type="hidden" value="<?php echo site_url(); ?>">
                     </div>
                     <?php echo $pagination; ?>
                 </div>
@@ -126,108 +137,62 @@
     </div>
 </section>
 <script type="text/javascript">
-    // autocomlete search begin//////////
-    $.widget( "custom.combobox", {
-      _create: function() {
-        this.wrapper = $( "<span>" )
-          .addClass( "custom-combobox" )
-          .insertAfter( this.element );
- 
-        this.element.hide();
-        this._createAutocomplete();
-        this._createShowAllButton();
-      },
- 
-      _createAutocomplete: function() {
-        var selected = this.element.children( ":selected" ),
-          value = selected.val()?selected.text():"";
- 
-        this.input = $( "<input>" )
-          .appendTo( this.wrapper )
-          .val(value)
-          .attr( "title", "" )
-          .attr( "placeholder", "Type A Section Name" )
-          .attr("style", "background-color: #fff")
-          .addClass( "custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left" )
-          .autocomplete({
-            delay: 0,
-            minLength: 0,
-            source: $.proxy( this, "_source" )
-          })
-          .tooltip({
-            classes: {
-              "ui-tooltip": "ui-state-highlight"
-            }
-          });
- 
-        this._on( this.input, {
-          autocompleteselect: function( event, ui ) {
-            ui.item.option.selected = true;
-            this._trigger( "select", event, {
-              item: ui.item.option
-            });
-          },
- 
-          autocompletechange: "_removeIfInvalid"
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+        //when click on edit icon
+        $('.edit').click(function () {
+            $(this).hide().parent().find('.supress_icon').show();
+            var sec_td = $(this).parent().siblings('.section_fld');
+            var section = sec_td.text();
+            var section_input = '<input class="form-control section_box" name="section" value="' + section + '"/>';
+            $(this).parent().find('.section_hdn').val(section);
+            sec_td.html(section_input);
         });
-      },
- 
-      _createShowAllButton: function() {
-        var input = this.input,
-          wasOpen = false;
- 
-        $( "<a>" )
-          .attr( "tabIndex", -1 )
-          .attr( "title", "Show All Products" )
-          .tooltip()
-          .appendTo( this.wrapper )
-          .button({
-            icons: {
-              primary: "ui-icon-triangle-1-s"
-            },
-            text: false
-          })
-          .removeClass( "ui-corner-all" )
-          .addClass( "custom-combobox-toggle ui-corner-right" )
-          .on( "mousedown", function() {
-            wasOpen = input.autocomplete( "widget" ).is( ":visible" );
-          })
-          .on( "click", function() {
-            input.trigger( "focus" );
- 
-            // Close if already visible
-            if ( wasOpen ) {
-              return;
-            }
- 
-            // Pass empty string as value to search for, displaying all results
-            input.autocomplete( "search", "" );
-          });
-      },
- 
-      _source: function( request, response ) {
-        var matcher = new RegExp( $.ui.autocomplete.escapeRegex(request.term), "i" );
-        response( this.element.children( "option" ).map(function() {
-          var text = $( this ).text();
-          if ( this.value && ( !request.term || matcher.test(text) ) )
-            return {
-              label: text,
-              value: text,
-              option: this
-            };
-        }) );
-      },
- 
+//    when click on cancel
+        $('.cancel').click(function () {
+            $(this).parent().find('.supress_icon').hide();
+            $(this).parent().find('.edit').show();
+            var section = $(this).parent().find('.section_hdn').val();
+            var section_td = $(this).parent().siblings('.section_fld');
+            section_td.html(section);
+        });
+//    when click on save 
+        $('.save').click(function () {
+            var base_url = $('#base_url').val();
+            var site_url = $('#site_url').val();
+            var section = $(this).parent().siblings('.section_fld').find('.section_box').val();
+            var sec_id = $(this).parent().find('.sec_id').val();
+            $.ajax({
+                context: this,
+                url: site_url + '/Dashboard/updateSection',
+                type: 'post',
+                dataType: 'text',
+                data: {
+                    section: section,
+                    sec_id: sec_id,
+                },
+                beforeSend: function () {
+                    $(this).parent().append('<img id="loader" src="' + base_url + 'asset/images/loader.gif" alt="loading"/>');
+                },
+                success: function (response) {
+                    if (response !== 'problem') {
+                        var info = response.split('|');
+                        $(this).parent().find('.supress_icon').hide();
+                        $(this).parent().find('.edit').show();
+                        var sec_id = $(this).parent().siblings('.section_fld');
+                        sec_id.html(info[0]);
+                    } else {
+                        alert('There ais a problem');
+                    }
+                    $('#loader').remove();
+                }
+            });
+        });
 
-      _destroy: function() {
-        this.wrapper.remove();
-        this.element.show();
-      }
-    });
- 
-    $( "#combobox" ).combobox();
-    $( "#toggle" ).on( "click", function() {
-      $( "#combobox" ).toggle();
-    });
-// autocomlete search END //////////
+    })
 </script>
+<!--
+//    when click on save 
+                     
+
+        });-->

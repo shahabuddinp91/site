@@ -276,12 +276,10 @@ ul li{list-style: none;}
 .feesAdd{
 
 }
-/*.feesAdd h3{
-    background: #3879D9;
-    color: #fff;
-    height: 40px;
-    padding: 4px;
-}*/
 .stdClsArea{
     margin-top: 40px;
+}
+/*//its for edit delete ajax*/
+.edit,.save,.cancel{
+    cursor: pointer;
 }

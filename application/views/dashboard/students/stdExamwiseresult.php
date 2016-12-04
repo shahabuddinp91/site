@@ -70,7 +70,7 @@ endforeach;
                                             </select>
                                         </td>
                                         <td>
-                                            <input type="submit" name="submit" value="Submit">
+                                            <input type="submit" name="submit" value="Submit"  class="btn btn-success">
                                         </td>
                                     </tr>
                                 </table>

@@ -33,10 +33,10 @@
                                     <?php echo anchor('Frontpage/loginpage', ' Admin Login ', array('class' => 'login glyphicon glyphicon-user', 'title' => 'Login')); ?>
                                 </li>
                                 <li>
-                                    <?php echo anchor('Frontpage/studentlogin', ' Students Login',array('class' => 'glyphicon glyphicon-user'));?>
+                                    <?php echo anchor('Frontpage/studentlogin', ' Students Login', array('class' => 'glyphicon glyphicon-user')); ?>
                                 </li>
                                 <li>
-                                    <?php echo anchor('Frontpage/teacherlogin', ' Teachers Login ',array('class' => 'glyphicon glyphicon-user'));?>
+                                    <?php echo anchor('Frontpage/teacherlogin', ' Teachers Login ', array('class' => 'glyphicon glyphicon-user')); ?>
                                 </li>
                             </ul>
                         </li>

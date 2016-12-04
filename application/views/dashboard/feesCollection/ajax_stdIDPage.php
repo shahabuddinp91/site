@@ -5,7 +5,7 @@
 //    die();
     foreach ($allStd as $sinData):
         ?>
-        <option value="<?php echo $sinData->student_id; ?>">
+        <option value="<?php echo $sinData->roll_no; ?>">
             <?php echo $sinData->roll_no; ?>
         </option>
         <?php
