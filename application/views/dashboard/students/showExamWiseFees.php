@@ -1,8 +1,14 @@
+<style >
+    .extraTR{
+        margin-bottom: 10px;
+    }
+</style>
 <?php
 foreach ($stdAcademicInfo as $single):
 
 endforeach;
 ?>
+
 <section class="stdacademicinfo">
     <div class="container">
         <div class="row">
@@ -84,8 +90,6 @@ endforeach;
                                         <tr>
                                             <th>Fees Name</th>
                                             <th>Amount</th>
-    <!--                                            <th>Total Amount</th>
-                                            <th>Paid Amount</th>-->
 
                                         </tr>
                                         <?php
@@ -94,56 +98,59 @@ endforeach;
                                             <tr>
                                                 <td><?php echo $singleSub->fees_name; ?></td>
                                                 <td><?php echo $singleSub->amount; ?></td>
-        <!--                                                <td><?php echo $singleSub->totalAmount; ?></td>
-                                                <td><?php echo $singleSub->paidamount; ?></td>-->
-
                                             </tr>
 
                                             <?php
                                         endforeach;
                                     }else {
-                                        echo '<h4>Data Not Found!';
+                                        echo '<h4 class="notFound">Data Not Found!';
                                     }
                                     ?>
-<!--                                    <tr> 
-                                        <td>Total Amount</td>
-                                        <td><?php echo $singleSub->totalAmount; ?></td>
-                                        <td>Paid Amount</td>
-                                        <td><?php echo $singleSub->paidamount; ?></td>
-                                    </tr>-->
                                 </table>
                             </div>
-                            <div class="subjectResult col-md-6">
-                                <?php if ($allFinance) { ?>
-                                    <table class="table subtbl">
-                                        <tr>
-                                            <th>Fees Date</th>
-                                            <th>Total Amount</th>
-                                            <th>Paid Amount</th>
+                            <div class="col-md-6">
+                                <p class="" style="width: 280px; text-align: center; background: #ddd; color: #003bb3; font-size: 18px; ">Payment Status</p>
+                                <?php 
+//                                                                    print_r($paymentStatus); die();
+                                                                    foreach ($paymentStatus as $single):
+                                                                        
+                                                                    endforeach;
+                                ?>
+                                <?php if($paymentStatus){?>
+                                <table class="">
+                                    <tr class="extraTR" style="margin: 5px;">
+                                        <td width="30%">Total Amount</td>
+                                        <td width="10%">:</td>
+                                        <td width="40%"><?php echo $single->totalAmount; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="30%">Paid Amount</td>
+                                        <td width="10%">:</td>
+                                        <td width="40%"><?php echo $single->paidAmount; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="30%">Due Amount</td>
+                                        <td width="10%">:</td>
+                                        <td width="40%"><?php echo $single->dueAmount; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="30%">Payment Status</td>
+                                        <td width="10%">:</td>
+                                        <td width="40%"><?php echo $single->status; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="30%">Payment Date</td>
+                                        <td width="10%">:</td>
+                                        <td width="40%"><?php echo $single->created; ?></td>
+                                    </tr>
+                                </table>
+                                <?php }else
+                                {
+                                    echo '<h4 class="notFound">Data not found!</h4>';
+                                }
+                                    ?>
+                            </div>
 
-                                        </tr>
-                                        <?php
-                                        foreach ($allFinance as $singleSub):
-                                            ?>
-                                            <tr>
-                                                <td><?php echo $singleSub->month; ?></td>
-                                                <td><?php echo $singleSub->totalAmount; ?></td>
-                                                <td><?php echo $singleSub->paidamount; ?></td>
-                                            </tr>
-                                            <?php
-                                        endforeach;
-                                    }else {
-                                        echo '<h4>Data Not Found!';
-                                    }
-                                    ?>
-<!--                                    <tr> 
-                                        <td>Total Amount</td>
-                                        <td><?php echo $singleSub->totalAmount; ?></td>
-                                        <td>Paid Amount</td>
-                                        <td><?php echo $singleSub->paidamount; ?></td>
-                                    </tr>-->
-                                </table>
-                            </div>
                         </div>
                     </div>                    
                 </div>
@@ -154,7 +161,7 @@ endforeach;
 
 <?php
 // echo $getClassID.', ' .$rollNo.', ' .$examid;
-echo '<pre>';
-print_r($stdAcademicInfo);
-echo '</pre>';
+//echo '<pre>';
+//print_r($stdAcademicInfo);
+//echo '</pre>';
 ?>

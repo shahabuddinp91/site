@@ -111,7 +111,7 @@
                                         <option value="">Select One</option>
                                         <?php foreach ($allTime as $singleTime):
                                             ?>
-                                            <option value="<?php echo $singleTime->time; ?>">
+                                            <option value="<?php echo $singleTime->time_id; ?>">
                                                 <?php echo $singleTime->time; ?>
                                             </option>
                                             <?php
@@ -127,7 +127,7 @@
                                         <option value="">Select One</option>
                                         <?php foreach ($allTime as $singleTime):
                                             ?>
-                                            <option value="<?php echo $singleTime->time; ?>">
+                                            <option value="<?php echo $singleTime->time_id; ?>">
                                                 <?php echo $singleTime->time; ?>
                                             </option>
                                             <?php
@@ -205,7 +205,7 @@
                             <th>Day</th>
                             <th>Class Time</th>
                             <th>Campus Name</th>
-                            <th>Room No</th>
+<!--                            <th>Room No</th>-->
                             <th>Action</th>
                         </tr>
                         <?php
@@ -222,7 +222,7 @@
                                 <td><?php echo $singleroutine->dayName; ?></td>
                                 <td><?php echo $singleroutine->time; ?></td>
                                 <td><?php echo $singleroutine->campusName; ?></td>
-                                <td><?php echo $singleroutine->roomno; ?></td>
+                                <!--<td><?php echo $singleroutine->roomno; ?></td>-->
                                 <td>
                                     <?php echo anchor('Dashboard/manageDayEdit', ' ', array('class' => 'glyphicon glyphicon-edit btn btn-primary btn-lg samebtn')); ?> |
 

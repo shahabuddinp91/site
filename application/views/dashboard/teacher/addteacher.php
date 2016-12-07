@@ -30,6 +30,7 @@
             <p class="msg"><?php echo $this->session->flashdata('msg'); ?></p>
             <p class="msg"><?php echo validation_errors(); ?></p>
             <div class="panel">
+                <?php echo '<span style="color:red">Total Teacher ('.$teacherCount  . ')</span>' ;?>
                 <div id="searchLoad">
                     <div class="well">
                         <div class="panel-info">

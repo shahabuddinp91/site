@@ -17,63 +17,62 @@
             </form>
             <p class="msg"><?php echo $this->session->flashdata('msg'); ?></p>
             <p class="success"><?php echo $this->session->flashdata('success'); ?></p>
-            <p class="msg"><?php // echo $error;         ?></p>
+            <p class="msg"><?php // echo $error;          ?></p>
             <p class="msg"><?php echo validation_errors(); ?></p>
-            <div class="panel">
-                <div class="well">
-                    <div class="panel-info">
-                        <table class="table table-hover">
-                            <?php if ($allstudents) { ?>
-                                <tr>
-                                    <th>Sl No
-                                        <?php
+            <div class="well">
+                <div class="panel-info">
+                    <?php echo '<span style="color:red; text-align: center;">Total Students (' . $studentsCount . ')</span>'; ?>
+                    <table class="table table-hover">
+                        <?php if ($allstudents) { ?>
+                            <tr>
+                                <th>Sl No
+                                    <?php
 //                                    echo date('F');
 //                                    echo "<pre/>";
 //                                    print_r($allstudent); 
+                                    ?>
+                                </th>
+                                <th>Students Name</th>
+                                <th>Class Name</th>
+                                <th>Mobile</th>
+                                <th>E-Mail</th>
+                                <th>Picture</th>
+                                <th>Action</th>
+
+                            </tr>
+                            <?php
+                            $sl = 0;
+                            foreach ($allstudents as $single):
+                                $sl++;
+                                ?>
+                                <tr>
+                                    <td><?php echo $sl; ?></td>
+                                    <td><?php echo $single->student_name; ?></td>
+                                    <td><?php echo $single->class_name; ?></td>
+                                    <td><?php echo $single->phone; ?></td>
+                                    <td><?php echo $single->email; ?></td>
+                                    <td>
+                                        <img src="<?php echo $baseurl . 'uploads/students/' . $single->photo; ?>" class="tpic">
+                                    </td>
+                                    <td>
+                                        <?php echo anchor('Dashboard/' . $single->student_id, 'Details', array('class' => 'btn btn-primary samebtnde')); ?>
+                                        <?php echo anchor('Dashboard/' . $single->student_id, ' ', array('title' => 'Edit', 'class' => 'glyphicon glyphicon-edit btn btn-primary samebtn')); ?>
+                                        <?php
+                                        echo anchor('Dashboard/studentDelete/' . $single->student_id, ' ', array('title' => 'Delete', 'class' => 'glyphicon glyphicon-trash btn btn-danger samebtn', 'onclick' => "return confirm('Do you want to delete it ?')"));
                                         ?>
-                                    </th>
-                                    <th>Students Name</th>
-                                    <th>Class Name</th>
-                                    <th>Mobile</th>
-                                    <th>E-Mail</th>
-                                    <th>Picture</th>
-                                    <th>Action</th>
+
+                                    </td>
 
                                 </tr>
                                 <?php
-                                $sl = 0;
-                                foreach ($allstudents as $single):
-                                    $sl++;
-                                    ?>
-                                    <tr>
-                                        <td><?php echo $sl; ?></td>
-                                        <td><?php echo $single->student_name; ?></td>
-                                        <td><?php echo $single->class_name; ?></td>
-                                        <td><?php echo $single->phone; ?></td>
-                                        <td><?php echo $single->email; ?></td>
-                                        <td>
-                                            <img src="<?php echo $baseurl . 'uploads/students/' . $single->photo; ?>" class="tpic">
-                                        </td>
-                                        <td>
-                                            <?php echo anchor('Dashboard/' . $single->student_id, 'Details', array('class' => 'btn btn-primary samebtnde')); ?>
-                                            <?php echo anchor('Dashboard/' . $single->student_id, ' ', array('title' => 'Edit', 'class' => 'glyphicon glyphicon-edit btn btn-primary samebtn')); ?>
-                                            <?php 
-                                            echo anchor('Dashboard/studentDelete/' . $single->student_id, ' ', array('title' => 'Delete', 'class' => 'glyphicon glyphicon-trash btn btn-danger samebtn','onclick'=>"return confirm('Do you want to delete it ?')")); 
-                                            ?>
-
-                                        </td>
-
-                                    </tr>
-                                    <?php
-                                endforeach;
-                            }else {
-                                echo '<h4>Data Not Found!</h4>';
-                            }
-                            ?>
-                        </table>
-                    </div>
-                    <?php echo $pagination; ?>
+                            endforeach;
+                        }else {
+                            echo '<h4>Data Not Found!</h4>';
+                        }
+                        ?>
+                    </table>
                 </div>
+                <?php echo $pagination; ?>
             </div>
 
 

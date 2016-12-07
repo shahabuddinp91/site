@@ -477,8 +477,8 @@ class Dashboardmodel extends CI_Model {
         $this->db->join('addteacher', 'addteacher.teacher_id=addroutine.teacher_id');
         $this->db->join('manageday', 'manageday.day_id=addroutine.day');
         $this->db->join('managecampus', 'managecampus.campus_id=addroutine.campus_name');
-//        $this->db->join('managetime', 'managetime.time_id=addroutine.time');
-//        $this->db->join('managevanu', 'managevanu.vanu_id=addroutine.time');
+        $this->db->join('managetime', 'managetime.time_id=addroutine.time_from');
+//        $this->db->join('managevanu', 'managevanu.campus_id=addroutine.campus_name');
         $this->db->limit($limit, $start);
         $query = $this->db->order_by('routine_id', 'desc')->get();
         return $query->result();
@@ -515,5 +515,15 @@ public function getAmount($feesID){
     $query = $this->db->get('addfees');
     return $query->result();
 }
-    
+     public function getshowStdPayment($clsid, $sectionid, $rollNo, $examid){         
+        $this->db->select('*');
+        $this->db->from('addfees');
+        $this->db->join('addfeescollection', 'addfeescollection.fees_id=addfees.fees_id');
+        $this->db->where('addfeescollection.class_id', $clsid);
+        $this->db->where('addfeescollection.section_id', $sectionid);
+        $this->db->where('addfeescollection.roll_no', $rollNo);
+        $this->db->where('addfeescollection.exam_id', $examid);
+        $query = $this->db->get();
+        return $query->result();
+    }
 }

@@ -135,6 +135,56 @@ class Frontpagemodel extends CI_Model {
         $query = $this->db->get();
         return $query->result();
     }
+    public function getSecPeriodClsSec($cls, $sec) {
+        $this->db->select('*');
+        $this->db->where('addroutine.class_id', $cls);
+        $this->db->where('addroutine.section_id', $sec);
+        $this->db->where('day', 2);
+        $this->db->from('addroutine');
+        $this->db->join('addsubject', 'addsubject.subject_id=addroutine.subject_id');
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function get_trd_PeriodClsSec($cls, $sec) {
+        $this->db->select('*');
+        $this->db->where('addroutine.class_id', $cls);
+        $this->db->where('addroutine.section_id', $sec);
+        $this->db->where('day', 3);
+        $this->db->from('addroutine');
+        $this->db->join('addsubject', 'addsubject.subject_id=addroutine.subject_id');
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function get_frt_PeriodClsSec($cls, $sec) {
+        $this->db->select('*');
+        $this->db->where('addroutine.class_id', $cls);
+        $this->db->where('addroutine.section_id', $sec);
+        $this->db->where('day', 4);
+        $this->db->from('addroutine');
+        $this->db->join('addsubject', 'addsubject.subject_id=addroutine.subject_id');
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function get_fif_PeriodClsSec($cls, $sec) {
+        $this->db->select('*');
+        $this->db->where('addroutine.class_id', $cls);
+        $this->db->where('addroutine.section_id', $sec);
+        $this->db->where('day', 5);
+        $this->db->from('addroutine');
+        $this->db->join('addsubject', 'addsubject.subject_id=addroutine.subject_id');
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function get_six_PeriodClsSec($cls, $sec) {
+        $this->db->select('*');
+        $this->db->where('addroutine.class_id', $cls);
+        $this->db->where('addroutine.section_id', $sec);
+        $this->db->where('day', 6);
+        $this->db->from('addroutine');
+        $this->db->join('addsubject', 'addsubject.subject_id=addroutine.subject_id');
+        $query = $this->db->get();
+        return $query->result();
+    }
       public function getFinance($getClassID,$sectionID, $rollNo, $examid){
         $this->db->select('*');
         $this->db->from('addfeescollection');
@@ -143,6 +193,16 @@ class Frontpagemodel extends CI_Model {
         $this->db->where('addfeescollection.section_id', $sectionID);
         $this->db->where('addfeescollection.roll_no', $rollNo);
         $this->db->where('addfeescollection.exam_id', $examid);
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function getPaymentStatus($getClassID,$sectionID, $rollNo, $examid){
+        $this->db->select('*');
+        $this->db->from('stdpayments');
+        $this->db->where('stdpayments.cls_id', $getClassID);
+        $this->db->where('stdpayments.sec_id', $sectionID);
+        $this->db->where('stdpayments.roll_no', $rollNo);
+        $this->db->where('stdpayments.exam_id', $examid);
         $query = $this->db->get();
         return $query->result();
     }

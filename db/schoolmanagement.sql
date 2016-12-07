@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2016 at 11:36 AM
+-- Generation Time: Dec 07, 2016 at 12:58 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.20
 
@@ -99,16 +99,18 @@ CREATE TABLE `addfeescollection` (
 --
 
 INSERT INTO `addfeescollection` (`stdfees_id`, `class_id`, `section_id`, `roll_no`, `exam_id`, `fees_id`, `amount`, `totalAmount`, `paidamount`, `month`, `year`, `created`) VALUES
-(1, 24, 8, 1, 6, 1, '800', 1400, '1300', 'December', '2016', '04-12-2016'),
-(2, 24, 8, 1, 6, 2, '100', 1400, '1300', 'December', '2016', '04-12-2016'),
-(3, 24, 8, 1, 6, 3, '500', 1400, '1300', 'December', '2016', '04-12-2016'),
-(4, 28, 6, 3, 6, 1, '800', 900, '800', 'December', '2016', '04-12-2016'),
-(5, 28, 6, 3, 6, 2, '100', 900, '800', 'December', '2016', '04-12-2016'),
-(6, 24, 15, 1, 6, 2, '100', 300, '250', 'December', '2016', '04-12-2016'),
-(7, 24, 15, 1, 6, 4, '200', 300, '250', 'December', '2016', '04-12-2016'),
-(8, 24, 15, 1, 7, 1, '800', 800, '700', 'December', '2016', '04-12-2016'),
-(9, 24, 15, 1, 6, 2, '100', 600, '500', 'December', '2016', '04-12-2016'),
-(10, 24, 15, 1, 6, 3, '500', 600, '500', 'December', '2016', '04-12-2016');
+(1, 24, 15, 1, 6, 1, '800', 900, '850', 'December', '2016', '05-12-2016'),
+(2, 24, 15, 1, 6, 2, '100', 900, '850', 'December', '2016', '05-12-2016'),
+(3, 24, 15, 1, 7, 3, '500', 700, '500', 'December', '2016', '05-12-2016'),
+(4, 24, 15, 1, 7, 4, '200', 700, '500', 'December', '2016', '05-12-2016'),
+(5, 24, 8, 1, 6, 3, '500', 500, '400', 'December', '2016', '05-12-2016'),
+(6, 24, 15, 1, 6, 3, '500', 500, '350', 'December', '2016', '05-12-2016'),
+(7, 24, 15, 1, 6, 4, '200', 0, '', 'December', '2016', '05-12-2016'),
+(8, 24, 15, 1, 6, 3, '500', 0, '', 'December', '2016', '05-12-2016'),
+(9, 24, 15, 1, 6, 2, '100', 0, '', 'December', '2016', '05-12-2016'),
+(10, 28, 6, 1, 6, 1, '800', 0, '', 'December', '2016', '06-12-2016'),
+(11, 28, 6, 1, 6, 2, '100', 0, '', 'December', '2016', '06-12-2016'),
+(12, 24, 15, 1, 6, 4, '200', 0, '', 'December', '2016', '06-12-2016');
 
 -- --------------------------------------------------------
 
@@ -128,8 +130,8 @@ CREATE TABLE `addroutine` (
   `time_to` int(100) NOT NULL,
   `campus_name` int(255) NOT NULL,
   `room_no` int(20) NOT NULL,
-  `month` int(100) NOT NULL,
-  `created` int(50) NOT NULL
+  `month` varchar(100) NOT NULL,
+  `created` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -137,8 +139,10 @@ CREATE TABLE `addroutine` (
 --
 
 INSERT INTO `addroutine` (`routine_id`, `year`, `class_id`, `section_id`, `subject_id`, `teacher_id`, `day`, `time_from`, `time_to`, `campus_name`, `room_no`, `month`, `created`) VALUES
-(5, '2016', 24, 8, 1, 5, 1, 8, 8, 4, 7, 0, 29),
-(6, '2016', 28, 6, 3, 9, 1, 8, 8, 4, 8, 0, 29);
+(1, '2016', 24, 15, 1, 5, 1, 1, 1, 4, 7, 'December', '07-12-2016'),
+(2, '2016', 24, 15, 2, 6, 2, 1, 1, 4, 7, 'December', '07-12-2016'),
+(3, '2016', 24, 15, 7, 4, 1, 2, 2, 4, 8, 'December', '07-12-2016'),
+(4, '2016', 24, 15, 7, 4, 5, 1, 1, 4, 7, 'December', '07-12-2016');
 
 -- --------------------------------------------------------
 
@@ -230,7 +234,8 @@ INSERT INTO `addsubject` (`subject_id`, `subject_name`, `class_id`, `teacher_id`
 (2, 'Bangla Second Paper', 24, 6, '2016-09-04', NULL, NULL),
 (3, 'Chemistry', 28, 9, '2016-09-05', NULL, NULL),
 (5, 'Islamic Studies', 28, 7, '2016-09-05', NULL, NULL),
-(6, 'ENGLISH FOR TODAY', 24, 10, '2016-09-21', NULL, NULL);
+(6, 'ENGLISH FOR TODAY', 24, 10, '2016-09-21', NULL, NULL),
+(7, 'Islamic Studies', 24, 4, '2016-12-07', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -264,7 +269,8 @@ INSERT INTO `addteacher` (`teacher_id`, `teacher_name`, `mobile`, `birthday`, `g
 (6, 'Md Moin uddin', '01789', '10/01/2016', 'Male', 'teacher4@gmail.com', '123', 'Noakhali', 'BCA160903070943.jpg', NULL, NULL, NULL),
 (7, 'Teacher 5', '01258', '09/03/2016', 'Male', 'teacher5@gmail.com', '1478', 'noakhali', 'BCA160903070906.png', NULL, NULL, NULL),
 (8, 'Teacher 6', '01684964913', '09/02/2016', 'Male', 'teacher6@gmail.com', '125', 'Lakshmipur', 'BCA160903070921.png', NULL, NULL, NULL),
-(9, 'Teacher 71', '017031368681', '09/01/2016', 'Female', 'teacher7@gmail.com', 'admin1', 'asdgfgfg', 'BCA160928070936.png', NULL, NULL, NULL);
+(9, 'Teacher 71', '017031368681', '09/01/2016', 'Female', 'teacher7@gmail.com', 'admin1', 'asdgfgfg', 'BCA160928070936.png', NULL, NULL, NULL),
+(10, 'Kuddus', '01478956532', '09/04/2016', 'Male', 'kuddus@gmail.com', '123', 'Dhaka', 'BCA161207121250.jpg', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -562,6 +568,34 @@ INSERT INTO `sliders` (`slider_id`, `shortname`, `title`, `slider`, `created`, `
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `stdpayments`
+--
+
+CREATE TABLE `stdpayments` (
+  `pay_id` int(20) NOT NULL,
+  `cls_id` int(20) NOT NULL,
+  `sec_id` int(20) NOT NULL,
+  `roll_no` int(20) NOT NULL,
+  `exam_id` int(20) NOT NULL,
+  `totalAmount` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `paidAmount` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `dueAmount` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `status` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `month` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `year` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `created` varchar(20) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `stdpayments`
+--
+
+INSERT INTO `stdpayments` (`pay_id`, `cls_id`, `sec_id`, `roll_no`, `exam_id`, `totalAmount`, `paidAmount`, `dueAmount`, `status`, `month`, `year`, `created`) VALUES
+(1, 24, 15, 1, 6, '2400', '2000', '400', 'Unpaid', 'December', '2016', '07-12-2016');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `testimonial`
 --
 
@@ -581,7 +615,7 @@ CREATE TABLE `testimonial` (
 
 INSERT INTO `testimonial` (`testimonial_id`, `title`, `description`, `name`, `created`, `updated`, `deleted`) VALUES
 (2, 'Second Testimonial', ' Hi ProblemHi Problem Hi Problem Hi Problem Hi Problem Hi Problem Hi Problem', 'Rahim', '2016-08-31', NULL, NULL),
-(4, 'Testimonial 1', '  I love you', 'Karim 1', '2016-08-31', NULL, NULL);
+(4, 'Testimonial 1', '    I love you ', 'Karim 1', '2016-08-31', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -727,6 +761,12 @@ ALTER TABLE `sliders`
   ADD PRIMARY KEY (`slider_id`);
 
 --
+-- Indexes for table `stdpayments`
+--
+ALTER TABLE `stdpayments`
+  ADD PRIMARY KEY (`pay_id`);
+
+--
 -- Indexes for table `testimonial`
 --
 ALTER TABLE `testimonial`
@@ -756,12 +796,12 @@ ALTER TABLE `addfees`
 -- AUTO_INCREMENT for table `addfeescollection`
 --
 ALTER TABLE `addfeescollection`
-  MODIFY `stdfees_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `stdfees_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `addroutine`
 --
 ALTER TABLE `addroutine`
-  MODIFY `routine_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `routine_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `addsection`
 --
@@ -776,12 +816,12 @@ ALTER TABLE `addstudent`
 -- AUTO_INCREMENT for table `addsubject`
 --
 ALTER TABLE `addsubject`
-  MODIFY `subject_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `subject_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `addteacher`
 --
 ALTER TABLE `addteacher`
-  MODIFY `teacher_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `teacher_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `copyright`
 --
@@ -837,6 +877,11 @@ ALTER TABLE `settings`
 --
 ALTER TABLE `sliders`
   MODIFY `slider_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `stdpayments`
+--
+ALTER TABLE `stdpayments`
+  MODIFY `pay_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `testimonial`
 --

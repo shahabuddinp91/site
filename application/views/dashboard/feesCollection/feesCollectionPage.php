@@ -92,7 +92,7 @@
                     </table>                    
                     <a id="add_row" class="btn btn-success pull-left">Add Row</a><a id='delete_row' class="pull-right btn btn-danger">Delete Row</a>
                 </div>
-                <div class="row">
+<!--                <div class="row">
                     <div class="form-group col-md-6" >
                         <label for="ttlamount" class="col-md-offset-2 col-md-4 ttl">Total Amount<span class="red">*</span></label>                                
                         <div class="col-sm-6">
@@ -105,12 +105,12 @@
                             <input name="paidamount" id="paidamount" class="form-control" placeholder="Enter Paid Amount">
                         </div>
                     </div>
-                <div class="form-group col-md-6" >
+                
+                </div>-->
+<div class="form-group col-md-6" >
                     <div class=" col-md-offset-4">
                         <input type="submit" name="save" value="Save" class="btn btn-success">
                     </div>
-                </div>
-                    
                 </div>
                 <?php echo form_close(); ?>
             </div>

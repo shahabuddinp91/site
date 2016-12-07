@@ -434,7 +434,12 @@ class Frontpage extends CI_Controller {
 //                $stdID = $singleData->student_id;
             }
 //            $this->session->set_userdata('classid', '');
-            $data['allPeriodClsSec'] = $this->Frontpagemodel->getPeriodClsSec($data['classid'], $data['sectionID']);
+            $data['allPeriodClsSec'] = $this->Frontpagemodel->getPeriodClsSec($data['classid'], $data['sectionID']);            
+            $data['secallPeriodClsSec'] = $this->Frontpagemodel->getSecPeriodClsSec($data['classid'], $data['sectionID']);   
+            $data['trd_allPeriodClsSec'] = $this->Frontpagemodel->get_trd_PeriodClsSec($data['classid'], $data['sectionID']); 
+            $data['frt_allPeriodClsSec'] = $this->Frontpagemodel->get_frt_PeriodClsSec($data['classid'], $data['sectionID']); 
+            $data['fift_allPeriodClsSec'] = $this->Frontpagemodel->get_fif_PeriodClsSec($data['classid'], $data['sectionID']); 
+            $data['six_allPeriodClsSec'] = $this->Frontpagemodel->get_six_PeriodClsSec($data['classid'], $data['sectionID']); 
 
             $this->load->view('dashboard/header', $data);
             $this->load->view('dashboard/sidebar', $data);
@@ -473,6 +478,8 @@ class Frontpage extends CI_Controller {
             $sectionID = $this->session->userdata('sectionID');
 
             $data['allFinance'] = $this->Frontpagemodel->getFinance($getClassID,$sectionID, $rollNo, $examid);
+//            students payments status
+            $data['paymentStatus'] = $this->Frontpagemodel->getPaymentStatus($getClassID,$sectionID, $rollNo, $examid);
             $this->load->view('dashboard/header', $data);
             $this->load->view('dashboard/sidebar', $data);
             $this->load->view('dashboard/students/showExamWiseFees', $data);

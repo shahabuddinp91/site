@@ -41,13 +41,10 @@
                             <?php echo anchor('Dashboard/index', 'Dashboard', array('class' => 'alwaysactive')); ?>
                         </li>
                     </ul>
-                    <p class="btnteacher btnextra">Teacher</p>
+                    <p class="btnteacher btnextra">Teacher </p>
                     <ul class="nav nav-sidebar showteacher">
                         <li>
                             <?php echo anchor('Dashboard/addTeacher', 'Add Teacher', array('title' => 'Add Teacher', 'class' => 'sameli')); ?>
-                        </li>
-                        <li>
-                            <?php echo anchor('Dashboard/teachersProfile', 'Teachers Profile', array('title' => 'Teacher Profile', 'class' => 'sameli')); ?>
                         </li>
                     </ul>
                     <p class="btnclass btnextra">Class</p>
@@ -79,9 +76,6 @@
                         <li>
                             <?php echo anchor('Dashboard/addstudent', 'Add Student', array('title' => 'Add Student', 'class' => 'sameli')); ?>
                         </li>
-                        <li>
-                            <?php echo anchor('Dashboard/studentsProfile', 'Students Profile', array('title' => 'Students Profile', 'class' => 'sameli')); ?>
-                        </li>
                     </ul>
                     <p class="btnsubject btnextra">Subject</p>
                     <ul class="nav nav-sidebar showsubject">
@@ -110,6 +104,9 @@
                             <?php echo anchor('Dashboard/addFeesCollection', 'Show Fees Collection', array('title' => 'Fees Collection List', 'class' => 'sameli')); ?>
                         </li>
                         <li>
+                            <?php echo anchor('Dashboard/stdFeesPaid', 'Students Payment', array('title' => 'Students Payment', 'class' => 'sameli')); ?>
+                        </li>
+                        <li>
                             <?php echo anchor('Dashboard/addFees', 'Show Fees', array('title' => 'Fees List', 'class' => 'sameli')); ?>
                         </li>
                     </ul>
@@ -117,9 +114,6 @@
                     <ul class="nav nav-sidebar showgrade">
                         <li>
                             <?php echo anchor('Dashboard/addGrade', 'Add Grade', array('title' => 'Add Grade', 'class' => 'sameli')); ?>
-                        </li>
-                        <li>
-                            <?php echo anchor('Dashboard/addSixClass', 'Class Six'); ?>
                         </li>
                     </ul>
 
