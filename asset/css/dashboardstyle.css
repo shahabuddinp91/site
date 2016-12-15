@@ -287,3 +287,6 @@ ul li{list-style: none;}
 .notFound{
     color: red;
 }
+.savepdfbtn{
+    margin-bottom: 5px;
+}

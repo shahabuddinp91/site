@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2016 at 12:58 PM
+-- Generation Time: Dec 10, 2016 at 12:50 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.20
 
@@ -71,7 +71,8 @@ INSERT INTO `addfees` (`fees_id`, `fees_name`, `fees_amount`, `month`, `year`, `
 (1, 'Registration Fees', '800', '', '', '', '', ''),
 (2, 'Form Fee ', '100', '', '', '', '', ''),
 (3, 'Exam Fees', '500', '', '', '', '', ''),
-(4, 'Others', '200', '', '', '', '', '');
+(4, 'Others', '200', '', '', '', '', ''),
+(5, 'Monthly Fee (Six)', '100', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -269,8 +270,7 @@ INSERT INTO `addteacher` (`teacher_id`, `teacher_name`, `mobile`, `birthday`, `g
 (6, 'Md Moin uddin', '01789', '10/01/2016', 'Male', 'teacher4@gmail.com', '123', 'Noakhali', 'BCA160903070943.jpg', NULL, NULL, NULL),
 (7, 'Teacher 5', '01258', '09/03/2016', 'Male', 'teacher5@gmail.com', '1478', 'noakhali', 'BCA160903070906.png', NULL, NULL, NULL),
 (8, 'Teacher 6', '01684964913', '09/02/2016', 'Male', 'teacher6@gmail.com', '125', 'Lakshmipur', 'BCA160903070921.png', NULL, NULL, NULL),
-(9, 'Teacher 71', '017031368681', '09/01/2016', 'Female', 'teacher7@gmail.com', 'admin1', 'asdgfgfg', 'BCA160928070936.png', NULL, NULL, NULL),
-(10, 'Kuddus', '01478956532', '09/04/2016', 'Male', 'kuddus@gmail.com', '123', 'Dhaka', 'BCA161207121250.jpg', NULL, NULL, NULL);
+(9, 'Teacher 71', '017031368681', '09/01/2016', 'Female', 'teacher7@gmail.com', 'admin1', 'asdgfgfg', 'BCA160928070936.png', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -791,7 +791,7 @@ ALTER TABLE `addclass`
 -- AUTO_INCREMENT for table `addfees`
 --
 ALTER TABLE `addfees`
-  MODIFY `fees_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `fees_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `addfeescollection`
 --
@@ -821,7 +821,7 @@ ALTER TABLE `addsubject`
 -- AUTO_INCREMENT for table `addteacher`
 --
 ALTER TABLE `addteacher`
-  MODIFY `teacher_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `teacher_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `copyright`
 --

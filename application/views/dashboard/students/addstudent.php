@@ -1,3 +1,11 @@
+<!--its for datepicker-->
+<!--<link rel="stylesheet" href="<?php echo $baseurl; ?>asset/css/datepicker.css" media="all">
+<script type="text/javascript" src="<?php echo $baseurl; ?>asset/js/bootstrap-datepicker.js"></script>
+<script>
+    $(function () {
+        $('.datepicker').datepicker();
+    });
+</script>-->
 <section class="studentsectionadd">
     <div class="col-md-offset-1 col-md-8 col-md-offset-1">
         <div class="student">
@@ -17,7 +25,7 @@
             </form>
             <p class="msg"><?php echo $this->session->flashdata('msg'); ?></p>
             <p class="success"><?php echo $this->session->flashdata('success'); ?></p>
-            <p class="msg"><?php // echo $error;          ?></p>
+            <p class="msg"><?php // echo $error;             ?></p>
             <p class="msg"><?php echo validation_errors(); ?></p>
             <div class="well">
                 <div class="panel-info">
@@ -103,11 +111,26 @@
                                     <input type="text" id="guardian_name" class="samefld form-control" name="guardian_name" placeholder="Write Guardian's Name!">
                                 </div>
                             </div>
+                            <div class="form-group cmndiv">
+                                <label for="classname" class="col-md-offset-1 col-md-3 ttl">Class Name</label>
+                                <div class="col-md-6">
+                                    <?php
+//                                    echo form_dropdown('classname', $allclass, set_value('classname'), array('class' => 'form-control classname', 'id' => 'clsname'));
+                                    ?>
+                                    <select name="classname" id="classname" class="form-control classname">
+                                        <option value="">Select class</option>
+                                        <?php foreach ($allclass as $allclassrec) { ?>
+                                            <option value="<?php echo $allclassrec->class_id; ?>"><?php echo $allclassrec->class_name; ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>                            
                             <script type="text/javascript">
                                 $(document).ready(function () {
-                                    $("#classname").change(function () {
+                                    $(".classname").change(function () {
+//                                        alert("ok");
                                         var classval = $(this).val();
-                                        //                                alert(classval);
+//                                        alert(classval);
                                         $.get("ajax_sectionid/" + classval, function (sec) {
                                             $('#section_id').html(sec);
 //                                            $('#hiddensection').val(sec);
@@ -117,20 +140,6 @@
                                     });
                                 });
                             </script>
-                            <div class="form-group cmndiv">
-                                <label for="classname" class="col-md-offset-1 col-md-3 ttl">Class Name</label>
-                                <div class="col-md-6">
-                                    <?php
-//                                    echo form_dropdown('classname', $allclass, set_value('classname'), array('class' => 'form-control classname', 'id' => 'clsname'));
-                                    ?>
-                                    <select name="classname" id="classname" class="form-control">
-                                        <option value="">Select class</option>
-                                        <?php foreach ($allclass as $allclassrec) { ?>
-                                            <option value="<?php echo $allclassrec->class_id; ?>"><?php echo $allclassrec->class_name; ?></option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
-                            </div>
                             <div class="form-group cmndiv">
                                 <label for="section" class="col-md-offset-1 col-md-3 ttl">Section</label>
                                 <div class="col-md-6">
@@ -150,7 +159,7 @@
                             <div class="form-group cmndiv">
                                 <label for="dob" class="col-md-offset-1 col-md-3 ttl">Birthday</label>
                                 <div class="col-md-6">
-                                    <input type="text" id="datepicker" class="samefld form-control" name="dob" placeholder="Date of Birth!">
+                                    <input type="text" id="datepicker" class="samefld form-control datepicker" name="dob" placeholder="Date of Birth!">
                                 </div>
                             </div>
                             <div class="form-group cmndiv">

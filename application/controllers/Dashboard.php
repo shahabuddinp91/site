@@ -320,8 +320,8 @@ class Dashboard extends CI_Controller {
 //call the model function to get the department data
             $data['allteacher'] = $this->Dashboardmodel->getTeacherlist($config["per_page"], $data['page']);
             $data['pagination'] = $this->pagination->create_links();
-            
-        $data['teacherCount'] = $this->db->count_all('addteacher');
+
+            $data['teacherCount'] = $this->db->count_all('addteacher');
 
             $this->load->view('dashboard/header', $data);
             $this->load->view('dashboard/sidebar', $data);
@@ -770,8 +770,8 @@ class Dashboard extends CI_Controller {
             $this->load->model('Dashboardmodel');
             $data['allstudents'] = $this->Dashboardmodel->getStudentslist($config["per_page"], $data['page']);
             $data['pagination'] = $this->pagination->create_links();
-            
-        $data['studentsCount'] = $this->db->count_all('addstudent');
+
+            $data['studentsCount'] = $this->db->count_all('addstudent');
 
             $this->load->view('dashboard/header', $data);
             $this->load->view('dashboard/sidebar', $data);
@@ -886,6 +886,7 @@ class Dashboard extends CI_Controller {
     public function searchStudents() {
         if ($this->session->userdata('current_user_id')) {
             $data['baseurl'] = $this->baseurl;
+            $data['studentsCount'] = $this->db->count_all('addstudent');
 //        its for class list
             $data['allclass'] = $this->Dashboardmodel->getclass();
 //its for search
@@ -2211,4 +2212,354 @@ class Dashboard extends CI_Controller {
         }
     }
 
+    public function clsSix() {
+        if ($this->session->userdata('current_user_id')) {
+            $data['baseurl'] = $this->baseurl;
+            $year = date('Y');
+            //pagination settings 
+            $config['base_url'] = base_url('index.php/Dashboard/clsSix/');
+            $config['total_rows'] = $this->db->count_all('addstudent');
+            $config['per_page'] = "20";
+            $config['uri_segment'] = 3;
+            $choice = $config['total_rows'] / $config['per_page'];
+            $config['num_links'] = floor($choice);
+//config for bootstrap pagination class integration
+            $config['full_tag_open'] = '<ul class="pagination">';
+            $config['full_tag_close'] = '</ul>';
+            $config['first_link'] = false;
+            $config['last_link'] = false;
+            $config['first_tag_open'] = '<li>';
+            $config['first_tag_close'] = '</li>';
+            $config['prev_link'] = '&laquo';
+            $config['prev_tag_open'] = '<li class="prev">';
+            $config['prev_tag_close'] = '</li>';
+            $config['next_link'] = '&raquo';
+            $config['next_tag_open'] = '<li>';
+            $config['next_tag_close'] = '</li>';
+            $config['last_tag_open'] = '<li>';
+            $config['last_tag_close'] = '</li>';
+            $config['cur_tag_open'] = '<li class="active"><a href="#">';
+            $config['cur_tag_close'] = '</a></li>';
+            $config['num_tag_open'] = '<li>';
+            $config['num_tag_close'] = '</li>';
+
+            $this->pagination->initialize($config);
+            $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+//call the model function to get the department data
+            $this->load->model('Dashboardmodel');
+            $data['allData'] = $this->Dashboardmodel->getClsSixStd($config["per_page"], $data['page'], $year);
+            $data['pagination'] = $this->pagination->create_links();
+
+            $this->load->view('dashboard/header', $data);
+            $this->load->view('dashboard/sidebar', $data);
+            $this->load->view('dashboard/students/clsSixPage', $data);
+            $this->load->view('dashboard/footer', $data);
+        } else {
+            redirect('Frontpage/loginpage');
+        }
+    }
+
+    public function clsSeven() {
+        if ($this->session->userdata('current_user_id')) {
+            $data['baseurl'] = $this->baseurl;
+            $year = date('Y');
+            //pagination settings 
+            $config['base_url'] = base_url('index.php/Dashboard/clsSeven/');
+            $config['total_rows'] = $this->db->count_all('addstudent');
+            $config['per_page'] = "20";
+            $config['uri_segment'] = 3;
+            $choice = $config['total_rows'] / $config['per_page'];
+            $config['num_links'] = floor($choice);
+//config for bootstrap pagination class integration
+            $config['full_tag_open'] = '<ul class="pagination">';
+            $config['full_tag_close'] = '</ul>';
+            $config['first_link'] = false;
+            $config['last_link'] = false;
+            $config['first_tag_open'] = '<li>';
+            $config['first_tag_close'] = '</li>';
+            $config['prev_link'] = '&laquo';
+            $config['prev_tag_open'] = '<li class="prev">';
+            $config['prev_tag_close'] = '</li>';
+            $config['next_link'] = '&raquo';
+            $config['next_tag_open'] = '<li>';
+            $config['next_tag_close'] = '</li>';
+            $config['last_tag_open'] = '<li>';
+            $config['last_tag_close'] = '</li>';
+            $config['cur_tag_open'] = '<li class="active"><a href="#">';
+            $config['cur_tag_close'] = '</a></li>';
+            $config['num_tag_open'] = '<li>';
+            $config['num_tag_close'] = '</li>';
+
+            $this->pagination->initialize($config);
+            $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+//call the model function to get the department data
+            $this->load->model('Dashboardmodel');
+            $data['allData'] = $this->Dashboardmodel->getClsSevenStd($config["per_page"], $data['page'], $year);
+            $data['pagination'] = $this->pagination->create_links();
+
+            $this->load->view('dashboard/header', $data);
+            $this->load->view('dashboard/sidebar', $data);
+            $this->load->view('dashboard/students/clsSevenPage', $data);
+            $this->load->view('dashboard/footer', $data);
+        } else {
+            redirect('Frontpage/loginpage');
+        }
+    }
+
+    public function clsEight() {
+        if ($this->session->userdata('current_user_id')) {
+            $data['baseurl'] = $this->baseurl;
+            $year = date('Y');
+            //pagination settings 
+            $config['base_url'] = base_url('index.php/Dashboard/clsEight/');
+            $config['total_rows'] = $this->db->count_all('addstudent');
+            $config['per_page'] = "20";
+            $config['uri_segment'] = 3;
+            $choice = $config['total_rows'] / $config['per_page'];
+            $config['num_links'] = floor($choice);
+//config for bootstrap pagination class integration
+            $config['full_tag_open'] = '<ul class="pagination">';
+            $config['full_tag_close'] = '</ul>';
+            $config['first_link'] = false;
+            $config['last_link'] = false;
+            $config['first_tag_open'] = '<li>';
+            $config['first_tag_close'] = '</li>';
+            $config['prev_link'] = '&laquo';
+            $config['prev_tag_open'] = '<li class="prev">';
+            $config['prev_tag_close'] = '</li>';
+            $config['next_link'] = '&raquo';
+            $config['next_tag_open'] = '<li>';
+            $config['next_tag_close'] = '</li>';
+            $config['last_tag_open'] = '<li>';
+            $config['last_tag_close'] = '</li>';
+            $config['cur_tag_open'] = '<li class="active"><a href="#">';
+            $config['cur_tag_close'] = '</a></li>';
+            $config['num_tag_open'] = '<li>';
+            $config['num_tag_close'] = '</li>';
+
+            $this->pagination->initialize($config);
+            $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+//call the model function to get the department data
+            $this->load->model('Dashboardmodel');
+            $data['allData'] = $this->Dashboardmodel->getClsEightStd($config["per_page"], $data['page'], $year);
+            $data['pagination'] = $this->pagination->create_links();
+
+            $this->load->view('dashboard/header', $data);
+            $this->load->view('dashboard/sidebar', $data);
+            $this->load->view('dashboard/students/clsEightPage', $data);
+            $this->load->view('dashboard/footer', $data);
+        } else {
+            redirect('Frontpage/loginpage');
+        }
+    }
+
+    public function clsNine() {
+        if ($this->session->userdata('current_user_id')) {
+            $data['baseurl'] = $this->baseurl;
+            $year = date('Y');
+            //pagination settings 
+            $config['base_url'] = base_url('index.php/Dashboard/clsNine/');
+            $config['total_rows'] = $this->db->count_all('addstudent');
+            $config['per_page'] = "20";
+            $config['uri_segment'] = 3;
+            $choice = $config['total_rows'] / $config['per_page'];
+            $config['num_links'] = floor($choice);
+//config for bootstrap pagination class integration
+            $config['full_tag_open'] = '<ul class="pagination">';
+            $config['full_tag_close'] = '</ul>';
+            $config['first_link'] = false;
+            $config['last_link'] = false;
+            $config['first_tag_open'] = '<li>';
+            $config['first_tag_close'] = '</li>';
+            $config['prev_link'] = '&laquo';
+            $config['prev_tag_open'] = '<li class="prev">';
+            $config['prev_tag_close'] = '</li>';
+            $config['next_link'] = '&raquo';
+            $config['next_tag_open'] = '<li>';
+            $config['next_tag_close'] = '</li>';
+            $config['last_tag_open'] = '<li>';
+            $config['last_tag_close'] = '</li>';
+            $config['cur_tag_open'] = '<li class="active"><a href="#">';
+            $config['cur_tag_close'] = '</a></li>';
+            $config['num_tag_open'] = '<li>';
+            $config['num_tag_close'] = '</li>';
+
+            $this->pagination->initialize($config);
+            $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+//call the model function to get the department data
+            $this->load->model('Dashboardmodel');
+            $data['allData'] = $this->Dashboardmodel->getClsNineStd($config["per_page"], $data['page'], $year);
+            $data['pagination'] = $this->pagination->create_links();
+
+            $this->load->view('dashboard/header', $data);
+            $this->load->view('dashboard/sidebar', $data);
+            $this->load->view('dashboard/students/clsNinePage', $data);
+            $this->load->view('dashboard/footer', $data);
+        } else {
+            redirect('Frontpage/loginpage');
+        }
+    }
+
+    public function clsTen() {
+        if ($this->session->userdata('current_user_id')) {
+            $data['baseurl'] = $this->baseurl;
+            $year = date('Y');
+            //pagination settings 
+            $config['base_url'] = base_url('index.php/Dashboard/clsTen/');
+            $config['total_rows'] = $this->db->count_all('addstudent');
+            $config['per_page'] = "20";
+            $config['uri_segment'] = 3;
+            $choice = $config['total_rows'] / $config['per_page'];
+            $config['num_links'] = floor($choice);
+//config for bootstrap pagination class integration
+            $config['full_tag_open'] = '<ul class="pagination">';
+            $config['full_tag_close'] = '</ul>';
+            $config['first_link'] = false;
+            $config['last_link'] = false;
+            $config['first_tag_open'] = '<li>';
+            $config['first_tag_close'] = '</li>';
+            $config['prev_link'] = '&laquo';
+            $config['prev_tag_open'] = '<li class="prev">';
+            $config['prev_tag_close'] = '</li>';
+            $config['next_link'] = '&raquo';
+            $config['next_tag_open'] = '<li>';
+            $config['next_tag_close'] = '</li>';
+            $config['last_tag_open'] = '<li>';
+            $config['last_tag_close'] = '</li>';
+            $config['cur_tag_open'] = '<li class="active"><a href="#">';
+            $config['cur_tag_close'] = '</a></li>';
+            $config['num_tag_open'] = '<li>';
+            $config['num_tag_close'] = '</li>';
+
+            $this->pagination->initialize($config);
+            $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+//call the model function to get the department data
+            $this->load->model('Dashboardmodel');
+            $data['allData'] = $this->Dashboardmodel->getClsTenStd($config["per_page"], $data['page'], $year);
+            $data['pagination'] = $this->pagination->create_links();
+
+            $this->load->view('dashboard/header', $data);
+            $this->load->view('dashboard/sidebar', $data);
+            $this->load->view('dashboard/students/clsTenPage', $data);
+            $this->load->view('dashboard/footer', $data);
+        } else {
+            redirect('Frontpage/loginpage');
+        }
+    }
+
+//    public function classSixpdf($htmlcontent) {
+//        include (APPPATH."third_party/dompdf/autoload.inc.php");
+//        //and now in creating new instance dompdf
+//        $dompdf = new Dompdf\Dompdf(); 
+//        //now we can use all methods of dompdf 
+//        //first in viving our html text to this method.
+//        $dompdf->load_html($htmlcontent);
+//        // and getting rend 
+////        $dompdf->render();
+//        //now our html converted pdf . with ->output method we can get it.
+//        //and in making this a pdf file and save.
+//        //but first this method overloaded , if upload, we will give true, if no only stream we will give false
+////        if($for_upload){
+////        file_put_contents($new_file.".pdf", $dompdf->output());
+////        }
+//        //url wont accept 
+//        // oh we gave wrong parametters . first we must give true / and file name
+//        
+//    }
+    
+    public function classSixpdf() {
+        if ($this->session->userdata('current_user_id')) {
+            $data['baseurl'] = $this->baseurl;
+            $year = date('Y');
+//load mPDF library
+            $this->load->library('m_pdf');
+//actually, you can pass mPDF parameter on this load() function
+            $pdf = $this->m_pdf->load();            
+            $data['allData'] = $this->Dashboardmodel->getClsSixStdPdf($year);
+//            $this->load->view('dashboard/header',$data);
+            $this->load->view('dashboard/students/pdfClsSix', $data);
+             } else {
+            redirect('Frontpage/loginpage');
+        }
+    }
+    public function classSevenpdf(){
+        if($this->session->userdata('current_user_id')){
+            $data['baseurl'] = $this->baseurl;
+            $year = date('Y');
+//load mPDF library
+            $this->load->library('m_pdf');
+//actually, you can pass mPDF parameter on this load() function
+            $pdf = $this->m_pdf->load();            
+            $data['allData'] = $this->Dashboardmodel->getClsSevenStdPdf($year);
+//            $this->load->view('dashboard/header',$data);
+            $this->load->view('dashboard/students/pdfClsSeven', $data);
+             } else {
+            redirect('Frontpage/loginpage');
+        }
+    }
+    public function classTenpdf(){
+        if($this->session->userdata('current_user_id')){
+            $data['baseurl'] = $this->baseurl;
+            $year = date('Y');
+//load mPDF library
+            $this->load->library('m_pdf');
+//actually, you can pass mPDF parameter on this load() function
+            $pdf = $this->m_pdf->load();            
+            $data['allData'] = $this->Dashboardmodel->getClsTenStdPdf($year);
+//            $this->load->view('dashboard/header',$data);
+            $this->load->view('dashboard/students/pdfClsTen', $data);
+             } else {
+            redirect('Frontpage/loginpage');
+        }
+    }
+
+//    public function classSixpdf() {
+//        if ($this->session->userdata('current_user_id')) {
+//            $data['baseurl'] = $this->baseurl;
+//            $year = date('Y');
+////load mPDF library
+//            $this->load->library('m_pdf');
+////actually, you can pass mPDF parameter on this load() function
+//            $pdf = $this->m_pdf->load();
+//            $data['allData'] = $this->Dashboardmodel->getClsSixStdPdf($year);
+//            
+////load the view, pass the variable and do not show it but "save" the output into $html variable
+//            $html = $this->load->view('dashboard/students/pdfClsSixStd', $data, true);
+//            $data['sch_title'] = 'School Management System Pro';
+//             $pdf->SetHTMLHeader('<div style="display:block; overflow: hidden; text-align: center;  font-weight: bold;" >'
+//                     . '<img src="' . base_url() . 'asset/images/logo.jpg" width="92" height="90"/><p >School Management System Pro</p>'
+//                     .'<h4>Student Lists<br><span>Class Six</span></h4><hr>'
+//                     . '</div>'
+//                     );
+//                          
+//             $pdf->SetHTMLFooter('
+//           <table width="100%" style="vertical-align: bottom; font-family: serif; font-size: 8pt; color: #000000; font-weight: bold; font-style: italic;"><tr>
+//           <td width="33%"><span style="font-weight: bold; font-style: italic;">{DATE j-m-Y}</span></td>
+//            <td width="33%" align="center" style="font-weight: bold; font-style: italic;">{PAGENO}/{nbpg}</td>
+//            <td width="33%" style="text-align: right; ">SP Foundation</td>
+//            </tr></table>
+//          ');
+////        
+//        $pdf->AddPage('', // L - landscape, P - portrait 
+//               '', '', '', '',
+//               10, // margin_left
+//               10, // margin right
+//              10, // margin top
+//              15, // margin bottom
+//               5, // margin header
+//               8); // margin footer
+////generate the PDF!
+//
+////this the the PDF filename that user will get to download
+//            $pdfFilePath = "SPF.pdf";
+//
+////generate the PDF!
+//            $pdf->WriteHTML($html);
+////offer it to user via browser download! (The PDF won't be saved on your server HDD)
+//            $pdf->Output($pdfFilePath, "D");
+//        } else {
+//            redirect('Frontpage/loginpage');
+//        }
+//    }
 }
+

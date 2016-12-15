@@ -71,10 +71,25 @@
                             <?php echo anchor('Dashboard/addRoutine', 'Create Routine', array('title' => 'Create Routine', 'class' => 'sameli')); ?>
                         </li>
                     </ul>
-                    <p class="btnstudent btnextra">Student</p>
+                    <p class="btnstudent btnextra">Student info</p>
                     <ul class="nav nav-sidebar showstd">
                         <li>
                             <?php echo anchor('Dashboard/addstudent', 'Add Student', array('title' => 'Add Student', 'class' => 'sameli')); ?>
+                        </li>
+                        <li>
+                            <?php echo anchor('Dashboard/clsSix', 'Class Six', array('title' => 'Class Six', 'class' => 'sameli')); ?>
+                        </li>
+                        <li>
+                            <?php echo anchor('Dashboard/clsSeven', 'Class Seven', array('title' => 'Class Seven', 'class' => 'sameli')); ?>
+                        </li>
+                        <li>
+                            <?php echo anchor('Dashboard/clsEight', 'Class Eight', array('title' => 'Class Eight', 'class' => 'sameli')); ?>
+                        </li>
+                        <li>
+                            <?php echo anchor('Dashboard/clsNine', 'Class Nine', array('title' => 'Class Nine', 'class' => 'sameli')); ?>
+                        </li>
+                        <li>
+                            <?php echo anchor('Dashboard/clsTen', 'Class Ten', array('title' => 'Class Ten', 'class' => 'sameli')); ?>
                         </li>
                     </ul>
                     <p class="btnsubject btnextra">Subject</p>

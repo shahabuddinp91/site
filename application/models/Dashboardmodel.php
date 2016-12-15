@@ -526,4 +526,89 @@ public function getAmount($feesID){
         $query = $this->db->get();
         return $query->result();
     }
+      public function getClsSixStd($limit, $start,$year) {
+        $this->db->select('*');
+        $this->db->from('addstudent');
+        $this->db->join('addclass', 'addclass.class_id=addstudent.class_id');
+        $this->db->join('addsection', 'addsection.section_id=addstudent.section_id');
+        $this->db->where('addstudent.class_id',24);
+        $this->db->where('addstudent.year',$year);
+        $this->db->limit($limit, $start);
+        $query = $this->db->order_by('student_id', 'desc')->get();
+        return $query->result();
+    }
+    public function getClsSevenStd($limit, $start,$year) {
+        $this->db->select('*');
+        $this->db->from('addstudent');
+        $this->db->join('addclass', 'addclass.class_id=addstudent.class_id');
+        $this->db->join('addsection', 'addsection.section_id=addstudent.section_id');
+        $this->db->where('addstudent.class_id',25);
+        $this->db->where('addstudent.year',$year);
+        $this->db->limit($limit, $start);
+        $query = $this->db->order_by('student_id', 'desc')->get();
+        return $query->result();
+    }    
+    public function getClsEightStd($limit, $start,$year) {
+        $this->db->select('*');
+        $this->db->from('addstudent');
+        $this->db->join('addclass', 'addclass.class_id=addstudent.class_id');
+        $this->db->join('addsection', 'addsection.section_id=addstudent.section_id');
+        $this->db->where('addstudent.class_id',26);
+        $this->db->where('addstudent.year',$year);
+        $this->db->limit($limit, $start);
+        $query = $this->db->order_by('student_id', 'desc')->get();
+        return $query->result();
+    }   
+    public function getClsNineStd($limit, $start,$year) {
+        $this->db->select('*');
+        $this->db->from('addstudent');
+        $this->db->join('addclass', 'addclass.class_id=addstudent.class_id');
+        $this->db->join('addsection', 'addsection.section_id=addstudent.section_id');
+        $this->db->where('addstudent.class_id',27);
+        $this->db->where('addstudent.year',$year);
+        $this->db->limit($limit, $start);
+        $query = $this->db->order_by('student_id', 'desc')->get();
+        return $query->result();
+    }
+    public function getClsTenStd($limit, $start,$year) {
+        $this->db->select('*');
+        $this->db->from('addstudent');
+        $this->db->join('addclass', 'addclass.class_id=addstudent.class_id');
+        $this->db->join('addsection', 'addsection.section_id=addstudent.section_id');
+        $this->db->where('addstudent.class_id',28);
+        $this->db->where('addstudent.year',$year);
+        $this->db->limit($limit, $start);
+        $query = $this->db->order_by('student_id', 'desc')->get();
+        return $query->result();
+    }
+    public function getClsSixStdPdf($year){
+        $this->db->select('*');
+        $this->db->from('addstudent');
+        $this->db->join('addclass', 'addclass.class_id=addstudent.class_id');
+        $this->db->join('addsection', 'addsection.section_id=addstudent.section_id');
+        $this->db->where('addstudent.class_id',24);
+        $this->db->where('addstudent.year',$year);
+        $query = $this->db->order_by('student_id', 'desc')->get();
+        return $query->result();        
+    }    
+    public function getClsSevenStdPdf($year){
+        $this->db->select('*');
+        $this->db->from('addstudent');
+        $this->db->join('addclass', 'addclass.class_id=addstudent.class_id');
+        $this->db->join('addsection', 'addsection.section_id=addstudent.section_id');
+        $this->db->where('addstudent.class_id',25);
+        $this->db->where('addstudent.year',$year);
+        $query = $this->db->order_by('student_id', 'desc')->get();
+        return $query->result();        
+    }
+    public function getClsTenStdPdf($year){
+        $this->db->select('*');
+        $this->db->from('addstudent');
+        $this->db->join('addclass', 'addclass.class_id=addstudent.class_id');
+        $this->db->join('addsection', 'addsection.section_id=addstudent.section_id');
+        $this->db->where('addstudent.class_id',28);
+        $this->db->where('addstudent.year',$year);
+        $query = $this->db->order_by('student_id', 'desc')->get();
+        return $query->result();        
+    }
 }
